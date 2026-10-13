@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>For Sana ♥</title>
+<meta property="og:title" content="For Sana ♥">
+<meta property="og:description" content="Twenty duas instead of twenty candles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════ design tokens ════════════════════ */
+:root{
+  --bg0:#140a0f; --bg1:#221019;
+  --ink:#f2e9db; --dim:#ad9da4;
+  --gold:#d9b45b; --gold-soft:#f0d69a;
+  --rose:#d99aa4; --burgundy:#93304a;
+  --paper:#f6efe1; --paper2:#efe4cf; --paper-ink:#4a372b;
+  --emerald:#6fc7a3;
+  --card:rgba(255,255,255,.045); --line:rgba(217,180,91,.26);
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Jost","Segoe UI",system-ui,sans-serif;
+  --arabic:"Amiri","Traditional Arabic","Scheherazade New",serif;
+  --hand:"Caveat","Segoe Script",cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans); color:var(--ink); background:var(--bg0);
+  background-image:radial-gradient(1150px 650px at 85% -10%, #33111f 0%, transparent 60%),
+                   radial-gradient(950px 600px at -12% 30%, #271124 0%, transparent 55%);
+  overflow-x:hidden; line-height:1.65; font-weight:300;
+}
+body.locked{overflow:hidden}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:6px}
+img{display:block; max-width:100%}
+button{font:inherit}
+#sky{position:fixed; inset:0; z-index:0; pointer-events:none}
+.aurora{position:fixed; inset:-15%; z-index:0; pointer-events:none; filter:blur(95px); opacity:.5}
+.aurora::before,.aurora::after{content:""; position:absolute; width:60vmax; height:60vmax; border-radius:50%}
+.aurora::before{background:radial-gradient(circle at 32% 32%, rgba(147,48,74,.42), transparent 62%);
+  top:-14%; left:-8%; animation:drift1 46s ease-in-out infinite alternate}
+.aurora::after{background:radial-gradient(circle at 60% 60%, rgba(84,42,110,.38), transparent 62%);
+  bottom:-18%; right:-10%; animation:drift2 58s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(16vw,12vh) rotate(16deg)}}
+@keyframes drift2{to{transform:translate(-14vw,-10vh) rotate(-13deg)}}
+.reduced .aurora::before,.reduced .aurora::after{animation:none}
+main,header,footer{position:relative; z-index:1}
+::selection{background:var(--gold); color:#241a05}
+#progress{position:fixed; top:0; left:0; height:2px; width:0; z-index:60;
+  background:linear-gradient(90deg,var(--burgundy),var(--gold)); box-shadow:0 0 12px rgba(217,180,91,.5)}
+
+/* ════════════════════ shared ════════════════════ */
+.wrap{max-width:960px; margin:0 auto; padding:0 22px}
+section{padding:80px 0}
+.kicker{text-align:center; letter-spacing:.42em; text-transform:uppercase; font-size:.66rem; color:var(--gold); margin-bottom:14px; font-weight:400}
+h2.title{text-align:center; font-family:var(--serif); font-weight:600; font-size:clamp(1.9rem,4.6vw,2.7rem); letter-spacing:.01em}
+.sub{text-align:center; color:var(--dim); max-width:580px; margin:14px auto 0; font-size:1rem}
+.divider{display:flex; align-items:center; gap:14px; justify-content:center; margin:24px auto 0}
+.divider .l,.divider .r{height:1px; width:110px; background:linear-gradient(90deg,transparent,var(--line))}
+.divider .r{background:linear-gradient(270deg,transparent,var(--line))}
+.star8{width:16px; height:16px; fill:var(--gold); flex:0 0 auto}
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease}
+.reveal.in{opacity:1; transform:none}
+.reduced .reveal{transition:none; opacity:1; transform:none}
+.ar{font-family:var(--arabic); direction:rtl}
+.gold{color:var(--gold-soft)}
+.hand{font-family:var(--hand)}
+
+/* ════════════════════ intro overlay ════════════════════ */
+#intro{position:fixed; inset:0; z-index:100; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center; background:radial-gradient(900px 620px at 50% 30%, #241019, #0d060a);
+  transition:opacity 1.1s ease, visibility 1.1s}
+#intro.done{opacity:0; visibility:hidden; pointer-events:none}
+#intro .line{position:absolute; opacity:0; transform:translateY(14px); transition:opacity .9s ease, transform .9s ease; padding:0 26px}
+#intro .line.show{opacity:1; transform:none}
+#intro .l1{font-family:var(--hand); font-size:clamp(2.6rem,9vw,4.4rem); color:var(--gold-soft)}
+#intro .l2{font-family:var(--serif); font-style:italic; font-size:clamp(1.1rem,3.6vw,1.6rem); color:var(--ink); max-width:640px}
+#intro .l3{font-family:var(--serif); font-weight:600; font-size:clamp(1.9rem,7vw,3.2rem);
+  background:linear-gradient(160deg,#fff 20%,var(--gold-soft) 60%,var(--gold) 95%);
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+#intro .l4{font-size:.72rem; letter-spacing:.5em; text-transform:uppercase; color:var(--gold)}
+#intro .stack{display:flex; flex-direction:column; align-items:center; gap:18px; opacity:0; transform:translateY(14px);
+  transition:opacity .9s ease, transform .9s ease}
+#intro .stack.show{opacity:1; transform:none}
+#openBtn{margin-top:30px; cursor:pointer; border:1px solid var(--gold); color:var(--gold); background:transparent;
+  border-radius:999px; padding:15px 44px; letter-spacing:.3em; text-transform:uppercase; font-size:.74rem;
+  transition:all .4s ease; position:relative}
+#openBtn:hover{background:rgba(217,180,91,.12); box-shadow:0 0 34px rgba(217,180,91,.28); letter-spacing:.36em}
+#introHint{margin-top:18px; font-size:.62rem; letter-spacing:.3em; color:var(--dim); text-transform:uppercase}
+
+/* ════════════════════ hero (preserved & warmed) ════════════════════ */
+.hero{min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 20px 60px}
+.bismillah{font-family:var(--arabic); direction:rtl; font-size:clamp(1.15rem,3vw,1.5rem); color:var(--gold-soft); margin-bottom:6px}
+.b-en{font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim); margin-bottom:26px}
+#moon{cursor:pointer; transition:filter .4s ease, transform .4s ease; filter:drop-shadow(0 0 22px rgba(240,214,154,.35))}
+#moon:hover{filter:drop-shadow(0 0 34px rgba(240,214,154,.6)); transform:scale(1.04)}
+.moon-hint{font-size:.66rem; letter-spacing:.28em; color:var(--dim); margin:10px 0 30px; text-transform:uppercase; opacity:.8}
+.hero h1{font-family:var(--serif); font-weight:600; font-size:clamp(3rem,10vw,5.6rem); line-height:1.04;
+  background:linear-gradient(160deg,#fff 15%, var(--gold-soft) 55%, var(--gold) 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero h1 em{display:block; font-size:clamp(1.15rem,3.4vw,1.7rem); font-style:italic; font-weight:500; color:var(--rose); -webkit-text-fill-color:var(--rose); margin-top:10px}
+.typed-wrap{min-height:2.4em; margin-top:20px; font-family:var(--hand); font-size:clamp(1.5rem,4.6vw,2.1rem); color:var(--gold-soft)}
+.caret{display:inline-block; width:2px; background:var(--gold); animation:blink 1s steps(1) infinite; height:1.05em; vertical-align:-.15em; margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.cue{margin-top:44px; color:var(--dim); font-size:.68rem; letter-spacing:.34em; text-transform:uppercase; animation:float 2.6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(8px)}}
+.reduced .cue{animation:none}
+
+/* ════════════════════ note / counter (preserved) ════════════════════ */
+.card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:34px 30px; backdrop-filter:blur(6px)}
+.note-card p{text-align:center; font-family:var(--serif); font-size:clamp(1.13rem,2.8vw,1.38rem); font-weight:500}
+.note-card .small{margin-top:16px; font-family:var(--sans); font-size:.97rem; color:var(--dim); font-weight:300}
+#bdayLine{margin-top:22px; text-align:center; font-size:.78rem; letter-spacing:.24em; text-transform:uppercase; color:var(--emerald)}
+.count-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:30px}
+.count-box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 8px; text-align:center}
+.count-box b{display:block; font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,5vw,2.6rem); color:var(--gold-soft)}
+.count-box span{font-size:.64rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim)}
+
+/* ════════════════════ STORY BOOK (magazine) ════════════════════ */
+.book-stage{margin-top:46px}
+.book-wrap{position:relative; width:min(690px,94vw); aspect-ratio:1.46; margin:0 auto; perspective:1700px; touch-action:pan-y}
+.book{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .9s cubic-bezier(.3,.1,.25,1)}
+.leaf{position:absolute; top:0; bottom:0; left:50%; width:50%; transform-origin:left center;
+  transform-style:preserve-3d; transition:transform 1.05s cubic-bezier(.36,.06,.24,1)}
+.leaf.flipped{transform:rotateY(-180deg)}
+.page{position:absolute; inset:0; overflow:hidden; backface-visibility:hidden; border-radius:6px;
+  background:linear-gradient(105deg,var(--paper2) 0%, var(--paper) 18%, var(--paper) 82%, var(--paper2) 100%);
+  color:var(--paper-ink); box-shadow:inset 4px 0 14px rgba(70,45,20,.18)}
+.page.back{transform:rotateY(180deg); border-radius:6px}
+.leaf:not(.flipped) .page.front{box-shadow:inset -20px 0 30px -18px rgba(60,38,18,.35), 0 6px 26px rgba(0,0,0,.45)}
+.leaf.flipped .page.back{box-shadow:inset 20px 0 30px -18px rgba(60,38,18,.35), 0 -6px 26px rgba(0,0,0,.45)}
+.page::after{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .24 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.p-in{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:8% 9%; gap:10px}
+.p-photo .p-in{padding:0; gap:0}
+.p-photo img{width:100%; height:100%; object-fit:cover}
+.p-photo figcaption{position:absolute; left:0; right:0; bottom:0; padding:12px 16px 10px; font-family:var(--serif);
+  font-style:italic; font-size:.82rem; color:var(--paper); background:linear-gradient(transparent, rgba(20,10,8,.72)); text-align:center}
+.p-num{position:absolute; top:14px; right:16px; font-size:.58rem; letter-spacing:.3em; color:#a08c66; text-transform:uppercase}
+.p-kicker{font-size:.56rem; letter-spacing:.34em; text-transform:uppercase; color:#a8724a}
+.p-ch{font-family:var(--serif); font-style:italic; font-size:.8rem; color:#a8724a}
+.p-title{font-family:var(--serif); font-weight:700; font-size:clamp(1.15rem,2.3vw,1.5rem); color:var(--paper-ink); line-height:1.15}
+.p-text{font-size:clamp(.68rem,1.25vw,.82rem); line-height:1.75; color:#5d4a3d; max-width:34ch}
+.p-rule{width:44px; height:1px; background:#c8a35e; margin:2px 0}
+.p-july{background:linear-gradient(160deg,#fff8ea,#f7ead0); border:1px solid rgba(200,163,94,.65)}
+.p-july .p-title{color:#7a2438}
+.hand{font-family:var(--hand)}
+.bcover{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+  background:linear-gradient(150deg,#3a1524,#241019 60%,#1a0c13); color:var(--paper); border-radius:6px; border:1px solid var(--line)}
+.bcover h3{font-family:var(--serif); font-weight:600; font-size:clamp(1.4rem,3vw,2rem); color:var(--gold-soft); letter-spacing:.02em}
+.bcover .hand{font-size:clamp(1.3rem,3vw,1.8rem); color:var(--rose)}
+.frame-gold{position:absolute; inset:12px; border:1px solid rgba(217,180,91,.5); border-radius:4px; pointer-events:none}
+.book-ctrl{display:flex; align-items:center; justify-content:center; gap:22px; margin-top:26px}
+.book-btn{cursor:pointer; background:var(--card); border:1px solid var(--line); color:var(--gold); border-radius:999px;
+  padding:12px 26px; font-size:.66rem; letter-spacing:.28em; text-transform:uppercase; transition:all .3s ease}
+.book-btn:hover:not(:disabled){background:rgba(217,180,91,.12)}
+.book-btn:disabled{opacity:.35; cursor:default}
+#bookPage{font-size:.68rem; letter-spacing:.3em; color:var(--dim)}
+.book-hint{text-align:center; margin-top:12px; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--dim)}
+.book-heart{position:absolute; bottom:14px; right:18px; width:26px; cursor:pointer; opacity:.85; transition:transform .3s ease}
+.book-heart:hover{transform:scale(1.2)}
+
+/* ════════════════════ MEMORIES GALLERY ════════════════════ */
+.film{margin:44px calc(50% - 50vw) 0; padding:10px 5vw 26px; display:flex; gap:26px; overflow-x:auto;
+  scroll-snap-type:x mandatory; scrollbar-width:none}
+.film::-webkit-scrollbar{display:none}
+.pola{flex:0 0 auto; width:200px; scroll-snap-align:center; background:#fbf6ea; border-radius:4px; padding:10px 10px 12px;
+  box-shadow:0 16px 34px rgba(0,0,0,.45); transform:rotate(var(--tilt,0deg)); transition:transform .45s ease; cursor:pointer; position:relative}
+.pola:hover{transform:rotate(0deg) translateY(-8px) scale(1.03); z-index:3}
+.pola::before{content:""; position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(-2deg);
+  width:74px; height:22px; background:rgba(240,225,190,.55); border-left:1px dashed rgba(120,90,50,.3);
+  border-right:1px dashed rgba(120,90,50,.3); border-radius:2px}
+.pola-face{position:relative}
+.pola img{width:100%; aspect-ratio:1/1.06; object-fit:cover; border-radius:2px; filter:saturate(.94) contrast(1.02)}
+.pola figcaption{margin-top:10px; text-align:center; font-family:var(--hand); font-size:1.12rem; color:#57402c; line-height:1.2}
+.pola .flip-hint{position:absolute; right:8px; bottom:36px; font-size:.9rem; opacity:.85; filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+.pola-backside{position:absolute; inset:0; background:#fbf6ea; border-radius:4px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:10px; padding:18px; text-align:center; transform:rotateY(180deg);
+  backface-visibility:hidden}
+.pola-inner{position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.3,.1,.2,1)}
+.pola.turned .pola-inner{transform:rotateY(180deg)}
+.pola .pola-face,.pola figure{backface-visibility:hidden}
+.pola-backside p{font-family:var(--hand); font-size:1.15rem; color:#7a2438; line-height:1.35}
+.pola-backside small{font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:#a08c66}
+#lightbox{position:fixed; inset:0; z-index:80; display:grid; place-items:center; padding:22px;
+  background:rgba(10,5,8,.86); backdrop-filter:blur(10px); opacity:0; pointer-events:none; transition:opacity .35s ease}
+#lightbox.show{opacity:1; pointer-events:auto}
+#lightbox figure{max-width:min(860px,94vw); text-align:center}
+#lightbox img{max-height:74vh; width:auto; max-width:100%; margin:0 auto; border-radius:10px; box-shadow:0 30px 90px rgba(0,0,0,.6)}
+#lightbox figcaption{margin-top:14px; font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--paper)}
+.lb-btn{position:absolute; cursor:pointer; background:rgba(255,255,255,.08); border:1px solid var(--line); color:var(--paper);
+  border-radius:50%; width:46px; height:46px; font-size:1.15rem; display:grid; place-items:center; transition:background .3s}
+.lb-btn:hover{background:rgba(217,180,91,.2)}
+.lb-close{top:20px; right:20px}.lb-prev{left:16px; top:50%; transform:translateY(-50%)}.lb-next{right:16px; top:50%; transform:translateY(-50%)}
+
+/* ════════════════════ WORDS (flip cards) ════════════════════ */
+.words{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin-top:42px}
+.flip-card{perspective:900px; height:296px; cursor:pointer; position:relative}
+.flip-inner{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.3,.15,.2,1)}
+.flip-card.flip .flip-inner{transform:rotateY(180deg)}
+.word-face{position:absolute; inset:0; backface-visibility:hidden; border-radius:18px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; padding:22px;
+  background:var(--card); border:1px solid var(--line); backdrop-filter:blur(6px)}
+.word-face.backf{transform:rotateY(180deg); border-color:rgba(217,180,91,.5); background:linear-gradient(160deg, rgba(147,48,74,.16), rgba(255,255,255,.04))}
+.word-face .native{font-size:2rem; color:var(--gold-soft); line-height:1.4}
+.word-face .native.ar{font-size:2.2rem}
+.word-face h3{font-family:var(--serif); font-style:italic; font-weight:600; font-size:1.18rem; margin:8px 0 2px}
+.word-face .tag{font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--emerald)}
+.word-face p{color:var(--dim); font-size:.9rem; margin-top:8px}
+.word-face.backf p{font-family:var(--serif); font-size:1rem; color:var(--ink); font-style:italic}
+.word-face .tap{position:absolute; bottom:12px; font-size:.56rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim)}
+
+/* ════════════════════ SONGS ════════════════════ */
+.songs{margin-top:42px; display:grid; gap:14px}
+.track{display:flex; align-items:center; gap:16px; background:var(--card); border:1px solid var(--line);
+  border-radius:18px; padding:16px 18px; transition:border-color .3s ease, box-shadow .3s ease}
+.track.playing{border-color:var(--gold); box-shadow:0 10px 34px rgba(0,0,0,.4), 0 0 24px rgba(217,180,91,.12)}
+.track.fav{background:linear-gradient(150deg, rgba(217,180,91,.12), rgba(147,48,74,.10)), var(--card); border-color:rgba(217,180,91,.55)}
+.t-play{flex:0 0 auto; width:52px; height:52px; border-radius:50%; cursor:pointer; display:grid; place-items:center;
+  border:1px solid var(--gold); background:transparent; color:var(--gold); transition:all .3s ease}
+.t-play:hover{background:rgba(217,180,91,.14); transform:scale(1.05)}
+.t-play svg{width:18px; height:18px; fill:currentColor}
+.t-main{flex:1; min-width:0}
+.t-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.t-num{font-family:var(--serif); color:var(--gold); font-size:.9rem}
+.t-title{font-family:var(--serif); font-weight:600; font-size:1.06rem}
+.t-tamil{font-family:var(--serif); color:var(--gold-soft); font-size:.92rem}
+.t-note{font-size:.8rem; color:var(--dim); margin-top:2px}
+.t-badge{font-size:.56rem; letter-spacing:.22em; text-transform:uppercase; border:1px solid var(--line);
+  border-radius:999px; padding:3px 10px; color:var(--emerald)}
+.t-badge.fav-badge{color:#ffd28a; border-color:rgba(255,210,138,.4)}
+.wave{display:flex; align-items:flex-end; gap:2px; height:34px; margin-top:10px}
+.wave i{flex:1; height:calc(var(--h)*1%); background:linear-gradient(180deg,var(--rose),var(--burgundy)); border-radius:2px;
+  opacity:.65; transform-origin:bottom; transition:transform .3s}
+.track.playing .wave i{animation:eq 1s ease-in-out infinite alternate; animation-delay:calc(var(--d)*1ms); opacity:.95}
+@keyframes eq{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+.reduced .track.playing .wave i{animation:none; opacity:.95}
+.t-time{display:flex; justify-content:space-between; font-size:.66rem; color:var(--dim); letter-spacing:.12em; margin-top:6px}
+.t-bar{position:absolute; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.08); border-radius:0 0 18px 18px; overflow:hidden}
+.t-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--rose),var(--gold))}
+.track{position:relative; overflow:hidden}
+.t-fav-tag{position:absolute; top:14px; right:16px; font-size:.58rem; letter-spacing:.3em; color:#ffd28a; text-transform:uppercase}
+.songs-note{text-align:center; margin-top:22px; font-size:.72rem; color:var(--dim); letter-spacing:.06em}
+audio{display:none}
+
+/* ════════════════════ DUA JAR ════════════════════ */
+.jar-zone{margin-top:44px; display:flex; flex-direction:column; align-items:center}
+.jar-stage{position:relative; width:min(360px,78vw); height:440px; perspective:1150px; cursor:grab; touch-action:pan-y}
+.jar-stage:active{cursor:grabbing}
+.jar3d{position:absolute; left:50%; top:52%; transform-style:preserve-3d; width:0; height:0}
+.glass-panel{position:absolute; width:56px; height:330px; left:-28px; top:-166px;
+  background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(160,190,230,.05) 60%, rgba(255,255,255,.08));
+  border-left:1px solid rgba(255,255,255,.06); border-right:1px solid rgba(0,0,0,.08)}
+.jar-rim{position:absolute; left:-140px; top:-178px; width:280px; height:56px; border-radius:50%;
+  background:radial-gradient(ellipse at 50% 40%, rgba(255,255,255,.22), rgba(120,150,200,.10) 70%);
+  transform:rotateX(90deg)}
+.jar-base{position:absolute; left:-140px; top:110px; width:280px; height:56px; border-radius:50%;
+  background:radial-gradient(ellipse at 50% 45%, rgba(255,255,255,.16), rgba(90,110,160,.08) 75%);
+  transform:rotateX(90deg)}
+.knote{position:absolute; width:30px; height:38px; border-radius:5px; box-shadow:0 4px 10px rgba(0,0,0,.3)}
+.knote::after{content:""; position:absolute; top:0; right:0; border-style:solid; border-width:0 9px 9px 0;
+  border-color:transparent rgba(0,0,0,.18) transparent transparent}
+.knote .bib{position:absolute; inset:0; animation:bob 3.6s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(-3px) rotate(-2deg)}to{transform:translateY(4px) rotate(2.5deg)}}
+.reduced .knote .bib{animation:none}
+.lid3d{position:absolute; left:-150px; top:-222px; width:300px; height:88px; transform-style:preserve-3d;
+  transition:transform .9s cubic-bezier(.4,.05,.3,1), opacity .8s ease}
+.jar3d.open .lid3d{transform:translate3d(40px,-110px,40px) rotateX(28deg) rotateZ(10deg); opacity:0; pointer-events:none}
+.lid-top{position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(ellipse at 50% 30%, #f0d69a, #b08a3e 62%, #8a6526 100%); transform:rotateX(76deg)}
+.lid-knob{position:absolute; left:50%; top:-26px; width:54px; height:54px; margin-left:-27px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #f6df9f, #a37a2e 70%); transform:rotateX(90deg); cursor:pointer}
+.jar-shadow{position:absolute; left:50%; bottom:8px; width:300px; height:40px; transform:translateX(-50%);
+  background:radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%); filter:blur(4px)}
+.jar-shine{position:absolute; left:12%; top:8%; width:16%; height:74%; border-radius:40%/50%;
+  background:linear-gradient(100deg, rgba(255,255,255,.32), rgba(255,255,255,0) 80%); filter:blur(2px); pointer-events:none}
+.jar-hint{margin-top:14px; font-size:.62rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim); text-align:center}
+.feels{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:820px; margin:26px auto 0;
+  opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; pointer-events:none}
+.feels.show{opacity:1; transform:none; pointer-events:auto}
+.feel-chip{cursor:pointer; border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:999px;
+  padding:10px 18px; font-size:.78rem; letter-spacing:.04em; transition:all .3s ease}
+.feel-chip:hover{background:rgba(217,180,91,.13); border-color:var(--gold)}
+.feel-chip.secret{border-color:rgba(240,214,154,.7); color:var(--gold-soft); display:none}
+.feel-chip.secret.show{display:inline-block}
+.pick-row{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:22px; min-height:0}
+.pick{border:none; cursor:pointer; width:150px; min-height:104px; border-radius:10px; padding:12px; text-align:center;
+  font-family:var(--hand); font-size:1.06rem; color:#3e2d22; box-shadow:0 10px 26px rgba(0,0,0,.4);
+  transform:rotate(var(--tilt,0deg)); transition:transform .35s ease; position:relative}
+.pick:hover{transform:rotate(0deg) translateY(-6px)}
+.pick::after{content:""; position:absolute; top:0; right:0; border-style:solid; border-width:0 22px 22px 0;
+  border-color:transparent rgba(0,0,0,.12) transparent transparent}
+
+/* shared unfold modal (jar notes + letters) */
+.unfold{position:fixed; inset:0; z-index:85; display:grid; place-items:center; padding:20px;
+  background:rgba(10,5,9,.82); backdrop-filter:blur(10px); opacity:0; pointer-events:none; transition:opacity .4s ease}
+.unfold.show{opacity:1; pointer-events:auto}
+.paper-card{position:relative; width:min(470px,94vw); max-height:86vh; overflow:auto; background:linear-gradient(170deg,#fbf4e4,#f2e7d2);
+  color:#43321f; border-radius:6px; padding:40px 32px 32px; box-shadow:0 40px 110px rgba(0,0,0,.6);
+  transform:perspective(900px) rotateX(-26deg) translateY(18px); opacity:.6; transition:transform .7s cubic-bezier(.25,.9,.3,1), opacity .6s ease}
+.paper-card::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.55;
+  background:repeating-linear-gradient(transparent 0 30px, rgba(120,90,50,.07) 30px 31px)}
+.unfold.show .paper-card{transform:none; opacity:1}
+.paper-card .ar{display:block; text-align:right; font-size:1.5rem; line-height:2.2; color:#6d4d12}
+.paper-card .tr{font-family:var(--serif); font-style:italic; font-size:1.04rem; margin:14px 0 4px; color:#43321f}
+.paper-card .ref{font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:#8a6a20}
+.paper-card .msg{font-family:var(--hand); font-size:1.34rem; line-height:1.5; color:#7a2438; margin-top:16px}
+.paper-card .ltitle{font-family:var(--serif); font-weight:700; color:#7a2438; font-size:1.3rem; margin-bottom:12px}
+.paper-card .lbody{font-family:var(--hand); font-size:1.32rem; line-height:1.55; color:#463528}
+.unfold-x{position:absolute; top:12px; right:16px; cursor:pointer; background:none; border:none; font-size:1.2rem; color:#8a6a20}
+
+/* ════════════════════ DUAS + AYAH (preserved) ════════════════════ */
+#randomDua{display:block; margin:30px auto 0; cursor:pointer; font-weight:400; font-size:.72rem; letter-spacing:.3em;
+  text-transform:uppercase; color:var(--gold); background:transparent; border:1px solid var(--line); border-radius:999px;
+  padding:13px 30px; transition:all .35s ease}
+#randomDua:hover{background:rgba(217,180,91,.1); box-shadow:0 0 24px rgba(217,180,91,.18)}
+.dua-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:34px; align-items:start}
+.dua{width:100%; text-align:left; cursor:pointer; background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:0; overflow:hidden; color:var(--ink); font-family:var(--sans); transition:border-color .3s ease, box-shadow .3s ease}
+.dua:hover{border-color:rgba(217,180,91,.55)}
+.dua.open{border-color:var(--gold); box-shadow:0 10px 40px rgba(0,0,0,.35), 0 0 26px rgba(217,180,91,.1)}
+.dua-head{display:flex; align-items:center; gap:14px; padding:16px 18px}
+.dua-num{flex:0 0 auto; width:34px; height:34px; display:grid; place-items:center; font-family:var(--serif); font-weight:600;
+  color:var(--gold); border:1px solid var(--line); border-radius:50%; font-size:.9rem}
+.dua-head h3{font-weight:400; font-size:.95rem}
+.dua-head .plus{margin-left:auto; color:var(--gold); transition:transform .35s ease; font-size:1.15rem}
+.dua.open .plus{transform:rotate(45deg)}
+.dua-body{max-height:0; overflow:hidden; transition:max-height .55s ease}
+.reduced .dua-body{transition:none}
+.dua-inner{padding:4px 20px 22px; border-top:1px dashed rgba(217,180,91,.22)}
+.dua-ar{font-family:var(--arabic); direction:rtl; text-align:right; font-size:1.32rem; line-height:2.1; color:var(--gold-soft); margin:14px 0 12px}
+.dua-en{font-family:var(--serif); font-style:italic; font-size:1rem}
+.dua-src{font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--emerald); margin-top:8px}
+.dua-note{margin-top:12px; font-size:.88rem; color:var(--rose); font-weight:300}
+.dua-note::before{content:"— "; color:var(--dim)}
+.ayah{position:relative; text-align:center; padding:52px 34px; border:1px solid var(--line); border-radius:22px; background:var(--card)}
+.ayah::before{content:""; position:absolute; inset:8px; border:1px solid rgba(217,180,91,.15); border-radius:16px; pointer-events:none}
+.ayah .star-corner{position:absolute; width:14px; height:14px; fill:var(--gold); opacity:.9}
+.ayah .tl{top:-7px; left:-7px}.ayah .tr{top:-7px; right:-7px}.ayah .bl{bottom:-7px; left:-7px}.ayah .br{bottom:-7px; right:-7px}
+.ayah-ar{font-size:clamp(1.5rem,4.2vw,2.3rem); line-height:2.3; color:var(--gold-soft)}
+.ayah-en{font-family:var(--serif); font-style:italic; font-size:clamp(1.02rem,2.6vw,1.28rem); margin-top:22px}
+.ayah-ref{margin-top:12px; font-size:.68rem; letter-spacing:.32em; text-transform:uppercase; color:var(--dim)}
+
+/* ════════════════════ ENVELOPES ════════════════════ */
+.env-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:26px 22px; margin-top:46px}
+.env{position:relative; height:150px; cursor:pointer; perspective:700px; transition:transform .35s ease}
+.env:hover{transform:translateY(-5px)}
+.env-body{position:absolute; inset:0; border-radius:10px; background:linear-gradient(165deg,#e9dcc4,#dcc9a8);
+  box-shadow:0 14px 34px rgba(0,0,0,.4); overflow:hidden}
+.env-body::before{content:""; position:absolute; inset:0;
+  background:linear-gradient(115deg, transparent 49%, rgba(120,90,50,.14) 50%), linear-gradient(-115deg, transparent 49%, rgba(120,90,50,.14) 50%)}
+.env-letterpaper{position:absolute; left:8%; right:8%; top:10%; bottom:14%; background:#fbf4e4; border-radius:4px;
+  padding:12px 14px; transition:transform .7s cubic-bezier(.3,.8,.35,1) .25s; box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.env.open .env-letterpaper{transform:translateY(-58%)}
+.env-letterpaper p{font-family:var(--hand); font-size:1.02rem; color:#7a2438; line-height:1.25}
+.env-flap{position:absolute; left:0; right:0; top:0; height:52%; transform-origin:top center; transition:transform .65s ease, z-index 0s .3s;
+  transform-style:preserve-3d; z-index:3}
+.env.open .env-flap{transform:rotateX(-180deg); z-index:1}
+.env-flap .face{position:absolute; inset:0; backface-visibility:hidden;
+  background:linear-gradient(180deg,#efe0c6,#dfc9a6); clip-path:polygon(0 0, 100% 0, 50% 100%)}
+.env-flap .backface{position:absolute; inset:0; backface-visibility:hidden; transform:rotateX(180deg);
+  background:#c9b28c; clip-path:polygon(0 0, 100% 0, 50% 100%)}
+.env-front{position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:0 0 10px 10px;
+  background:linear-gradient(165deg, transparent 49.5%, #d9c5a2 50%), linear-gradient(-165deg, transparent 49.5%, #d9c5a2 50%),
+             linear-gradient(0deg, #e4d3b4 0%, #e4d3b4 0%);
+  background-size:50% 100%, 50% 100%, 100% 50%; background-position:left bottom, right bottom, center bottom; background-repeat:no-repeat}
+.env-label{position:absolute; left:0; right:0; bottom:16%; z-index:4; text-align:center; pointer-events:none;
+  font-family:var(--serif); font-style:italic; font-weight:600; font-size:.92rem; color:#7a5a30; padding:0 14px}
+.env-label small{display:block; font-family:var(--sans); font-size:.56rem; letter-spacing:.3em; text-transform:uppercase; color:#a08348; margin-top:3px}
+.env-seal{position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); z-index:5; width:30px; height:30px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #b23a56, #6e1930); box-shadow:0 2px 6px rgba(0,0,0,.4);
+  display:grid; place-items:center; color:#f3d9de; font-size:.66rem}
+.env.special .env-seal{background:radial-gradient(circle at 35% 30%, #f0d69a, #a37a2e); color:#5c4310; box-shadow:0 0 16px rgba(240,214,154,.55)}
+
+/* ════════════════════ FUTURE ════════════════════ */
+.future-hero{position:relative; border-radius:24px; overflow:hidden; border:1px solid var(--line); margin-top:40px}
+.future-hero img{width:100%; height:340px; object-fit:cover; object-position:center 74%; filter:brightness(1.22) saturate(1.05)}
+.future-hero .fh-in{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:24px; background:linear-gradient(180deg, rgba(16,8,12,.30), rgba(16,8,12,.58))}
+.fh-in .ar{font-size:clamp(2rem,6vw,3rem); color:var(--gold-soft)}
+.fh-in p{font-family:var(--serif); font-style:italic; font-size:clamp(1rem,2.6vw,1.3rem); max-width:560px; color:var(--paper)}
+.dreams{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-top:26px}
+.dream{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); height:150px; transition:transform .4s ease}
+.dream:hover{transform:translateY(-5px)}
+.dream img{width:100%; height:100%; object-fit:cover; object-position:center 62%; filter:brightness(.8) saturate(.95)}
+.dream figcaption{position:absolute; left:0; right:0; bottom:0; padding:12px 14px 10px;
+  background:linear-gradient(transparent, rgba(14,6,10,.8))}
+.dream figcaption b{display:block; font-family:var(--serif); font-weight:600; font-size:.98rem; color:var(--paper)}
+.dream figcaption span{font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold-soft)}
+.marriage{margin-top:34px; border-left:2px solid var(--gold); padding:6px 0 6px 24px}
+.marriage p{font-family:var(--serif); font-style:italic; font-size:1.12rem; color:var(--ink); max-width:640px}
+.marriage small{display:block; margin-top:10px; font-family:var(--sans); font-size:.86rem; color:var(--dim); max-width:640px}
+.future-line{display:flex; gap:14px; overflow-x:auto; padding:26px 6px 10px; scroll-snap-type:x mandatory; scrollbar-width:none}
+.future-line::-webkit-scrollbar{display:none}
+.fchip{flex:0 0 auto; scroll-snap-align:start; background:var(--card); border:1px dashed rgba(217,180,91,.45); border-radius:14px;
+  padding:16px 20px; text-align:center; min-width:170px}
+.fchip b{display:block; font-family:var(--serif); font-weight:600; color:var(--paper)}
+.fchip span{font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--emerald)}
+
+/* ════════════════════ FINAL LETTER ════════════════════ */
+.letter-big{position:relative; background:linear-gradient(180deg, #fbf4e4, #f3e9d4); color:#43321f; border-radius:22px;
+  padding:clamp(34px,6vw,64px); margin-top:40px; box-shadow:0 40px 110px rgba(0,0,0,.5); overflow:hidden}
+.letter-big::before{content:""; position:absolute; inset:14px; border:1px solid rgba(150,110,50,.28); border-radius:14px; pointer-events:none}
+.letter-big h3{font-family:var(--hand); font-weight:600; font-size:clamp(2rem,5.6vw,2.8rem); color:#7a2438; margin-bottom:18px}
+.letter-big p{font-family:var(--hand); font-size:clamp(1.22rem,3vw,1.5rem); line-height:1.62; color:#4a372b; margin-bottom:18px}
+.letter-big .sig{text-align:right; color:#7a2438; font-size:clamp(1.5rem,4vw,1.9rem)}
+.letter-big .sig small{display:block; font-size:.68rem; font-family:var(--sans); letter-spacing:.2em; text-transform:uppercase; color:#a08348; margin-top:6px}
+
+footer{text-align:center; padding:64px 20px 50px; color:var(--dim); font-size:.8rem; letter-spacing:.14em; position:relative; z-index:1}
+footer .star8{cursor:pointer}
+footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--gold-soft); margin:10px 0 8px; letter-spacing:.06em}
+#lastSecret{margin:14px auto 0; max-width:420px; font-family:var(--hand); font-size:1.3rem; color:var(--rose); opacity:0; transition:opacity 1s ease}
+#lastSecret.show{opacity:1}
+
+/* ════════════════════ atmosphere: grain + section moods ════════════════════ */
+.grain{position:fixed; inset:-40px; z-index:2; pointer-events:none; opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E")}
+.reduced .grain{display:none}
+#note,#letters,#final{background:radial-gradient(900px 520px at 50% 20%, rgba(240,214,154,.05), transparent 65%)}
+#songs{background:radial-gradient(1000px 600px at 15% 0%, rgba(84,42,110,.14), transparent 60%)}
+#midnight,#tahajjud{background:linear-gradient(180deg, transparent, #0a0f26 22%, #0d1430 78%, transparent)}
+
+/* ════════════════════ midnight notes ════════════════════ */
+.mn-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(152px,1fr)); gap:16px; margin-top:38px}
+.mnote{position:relative; height:176px; perspective:900px; cursor:pointer; border:0; background:none; padding:0; font:inherit; text-align:center}
+.mnote .in{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.mnote.flip .in{transform:rotateY(180deg)}
+.mnote .face{position:absolute; inset:0; border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:16px}
+.mnote .front{border:1px dashed rgba(240,214,154,.4); background:rgba(255,255,255,.02); color:var(--gold-soft); transition:border-color .3s ease, background .3s ease}
+.mnote:hover .front{border-color:rgba(240,214,154,.75); background:rgba(240,214,154,.05)}
+.mnote .cres{font-size:1.35rem; filter:drop-shadow(0 0 8px rgba(240,214,154,.55))}
+.mnote .front small{font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim)}
+.mnote .back{transform:rotateY(180deg); background:linear-gradient(165deg,#f6ecd9,#efe2c6); color:#4b3d28; font-family:var(--hand); font-size:1.04rem; line-height:1.55; box-shadow:0 16px 34px rgba(0,0,0,.42)}
+.reduced .mnote .in{transition:none}
+#mnCount{text-align:center; margin-top:20px; font-size:.62rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim); min-height:1em}
+
+/* ════════════════════ tahajjud — the last third ════════════════════ */
+.taj-wrap{position:relative; border:1px solid rgba(240,214,154,.16); border-radius:24px; margin-top:38px; padding:46px 26px 40px; overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.taj-star{position:absolute; width:2px; height:2px; border-radius:50%; background:#e6ebff; opacity:.4; pointer-events:none; animation:tw 3.6s ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.1} to{opacity:.75}}
+.reduced .taj-star{animation:none; opacity:.35}
+.taj-ar{font-family:var(--arabic); direction:rtl; text-align:center; font-size:clamp(1.2rem,3.4vw,1.75rem); line-height:2.25; color:var(--gold-soft); max-width:660px; margin:28px auto 0}
+.taj-en{font-family:var(--serif); font-style:italic; text-align:center; color:var(--ink); max-width:620px; margin:20px auto 0; line-height:1.9}
+.taj-ref{text-align:center; font-size:.62rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-top:16px}
+.taj-note{font-family:var(--hand); text-align:center; max-width:600px; margin:32px auto 0; font-size:clamp(1.02rem,2.6vw,1.14rem); line-height:1.85; color:var(--ink);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 10px}
+#tajNow{text-align:center; margin-top:22px; font-size:.64rem; letter-spacing:.3em; text-transform:uppercase; color:var(--dim)}
+#tajNow b{color:var(--gold-soft); font-weight:400; letter-spacing:.2em}
+
+/* ════════════════════ star burst (secret eggs) ════════════════════ */
+.burst-star{position:fixed; bottom:-20px; z-index:90; color:var(--gold-soft); pointer-events:none; opacity:0;
+  text-shadow:0 0 10px rgba(240,214,154,.6); animation:burstUp 3.1s ease-out forwards}
+@keyframes burstUp{0%{opacity:0; transform:translateY(0) rotate(0deg)}12%{opacity:1}100%{opacity:0; transform:translateY(-92vh) rotate(160deg)}}
+
+/* ════════════════════ toast + moon modal (preserved) ════════════════════ */
+#toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); z-index:95; opacity:0;
+  pointer-events:none; background:#221019; border:1px solid var(--line); color:var(--gold-soft); border-radius:999px;
+  padding:12px 26px; font-family:var(--serif); font-style:italic; font-size:1rem; transition:all .45s ease; max-width:88vw; text-align:center}
+#toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+#secret{position:fixed; inset:0; z-index:90; display:grid; place-items:center; padding:24px; background:rgba(10,5,9,.84);
+  backdrop-filter:blur(10px); opacity:0; pointer-events:none; transition:opacity .4s ease}
+#secret.show{opacity:1; pointer-events:auto}
+.secret-card{max-width:430px; text-align:center; background:#1e1016; border:1px solid var(--line); border-radius:20px;
+  padding:40px 30px; box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.secret-card h3{font-family:var(--serif); font-weight:600; font-size:1.4rem; color:var(--gold-soft); margin-bottom:14px}
+.secret-card p{font-family:var(--serif); font-size:1.1rem; line-height:1.8}
+.secret-card .ar{font-size:1.5rem; color:var(--gold-soft); display:block; margin:16px 0 4px; line-height:2}
+#secretClose{margin-top:22px; cursor:pointer; background:transparent; border:1px solid var(--line); color:var(--gold);
+  border-radius:999px; padding:10px 26px; font-size:.68rem; letter-spacing:.28em; text-transform:uppercase}
+
+/* ════════════════════ responsive ════════════════════ */
+@media (max-width:680px){
+  section{padding:64px 0}
+  .dua-grid{grid-template-columns:1fr}
+  .count-grid{grid-template-columns:repeat(2,1fr)}
+  .book-wrap{width:min(430px,90vw); aspect-ratio:.72; perspective:1300px; overflow:hidden; border-radius:8px}
+  .book{left:-100%; width:200%}
+  .p-text{max-width:40ch}
+  .p-num,.p-kicker{font-size:.52rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body class="locked">
+<div id="progress" aria-hidden="true"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ════════════════ CINEMATIC INTRO ════════════════ -->
+<div id="intro">
+  <div class="line l1" id="inL1">Sana…</div>
+  <div class="line l2" id="inL2">for the gurl I didn't know I was going to fall in love with —</div>
+  <div class="stack" id="inStack">
+    <div class="line l3" id="inL3" style="position:static">Sabr × Sana</div>
+    <div class="line l4" style="position:static">✦ &nbsp;October 18&nbsp; ✦</div>
+    <button id="openBtn" aria-label="open the gift">open this</button>
+    <div id="introHint">made only for you · scroll slowly</div>
+  </div>
+</div>
+
+<main>
+  <!-- ════════════════ WELCOME ════════════════ -->
+  <header class="hero">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <!-- <div class="b-en">In the name of Allah, the Most Merciful</div> -->
+    <svg id="moon" width="92" height="92" viewBox="0 0 100 100" role="img" aria-label="crescent moon — tap for a secret">
+      <defs><mask id="cut"><rect width="100" height="100" fill="white"/><circle cx="65" cy="42" r="26" fill="black"/></mask></defs>
+      <circle cx="50" cy="50" r="30" fill="#f0d69a" mask="url(#cut)"/>
+      <path d="M79 66 l2.1 5.1 5.1 2.1 -5.1 2.1 -2.1 5.1 -2.1 -5.1 -5.1 -2.1 5.1 -2.1z" fill="#d9b45b"/>
+    </svg>
+    <div class="moon-hint">tap the moon ✦</div>
+    <h1>Sahanas<em>(Sana- My Qalbiiii)</em></h1>
+    <div class="typed-wrap"><span id="typed"></span><span class="caret">&nbsp;</span></div>
+    <div class="cue">scroll slowly · this is for you</div>
+  </header>
+
+  <!-- ════════════════ A NOTE, FIRST ════════════════ -->
+  <section id="note">
+    <div class="wrap reveal">
+      <div class="kicker">mudhalla idha padi</div>
+      <h2 class="title">Ithu oru birthday page illa.</h2>
+      <div class="divider"><span class="l"></span><svg class="star8" viewBox="0 0 40 40"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg><span class="r"></span></div>
+      <div class="card note-card" style="margin-top:34px">
+        <p>enaku theriyum — nee birthdays celebrate panna maata.<br>
+        Candles-ah illa, blessings-ah dhaan nee count pannuva.<br>
+        adhanala dhan nee ivlo special Thangameyyyyy.</p>
+        <p class="small">So itha oru "birthday site"-nu nenaikkaadha. Oct 18 — twenty varusham munnaadi,
+        Allah unnai ezhudhi vecha andha naalukku solra oru chinna <span class="gold">shukr</span>.
+        Memories, duas, namma chinna moments — ellam vaangitu vanthruku diii thangameyyy unakaga. Medhuva scroll pannu, oru oru page a yum un koodave rasikkanum.</p>
+      </div>
+      <div id="bdayLine"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ OUR STORY — THE BOOK ════════════════ -->
+  <section id="story">
+    <div class="wrap reveal">
+      <div class="kicker">chapter by chapter</div>
+      <h2 class="title">Namba kadha, oru book-la</h2>
+      <p class="sub">namma moments and happiness paaka thiruppu.</p>
+      <div class="book-stage">
+        <div class="book-wrap" id="bookWrap" aria-label="our story book — swipe or use the buttons to turn pages">
+          <div class="book" id="book"></div>
+        </div>
+        <div class="book-ctrl">
+          <button class="book-btn" id="bPrev" aria-label="previous page">← munnadiii</button>
+          <span id="bookPage">cover</span>
+          <button class="book-btn" id="bNext" aria-label="next page">aduthaa →</button>
+        </div>
+        <div class="book-hint">drag or swipe pannu · sila pages la little secrets hidden a iruku</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ JULY 21 COUNTER ════════════════ -->
+  <section id="counter">
+    <div class="wrap reveal">
+      <div class="kicker">innum counting pogudhu</div>
+      <h2 class="title">July 21 la irundhu</h2>
+      <p class="sub">Anna Tower Park — oru amaidhaana introduction, rendu per, oru periya kadhai.</p>
+      <div class="count-grid">
+        <div class="count-box"><b id="cd">0</b><span>days</span></div>
+        <div class="count-box"><b id="ch">0</b><span>hours</span></div>
+        <div class="count-box"><b id="cm">0</b><span>minutes</span></div>
+        <div class="count-box"><b id="cs">0</b><span>seconds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ MEMORIES GALLERY ════════════════ -->
+  <section id="memories">
+    <div class="wrap reveal">
+      <div class="kicker">frozen seconds</div>
+      <h2 class="title">Namma memories, wall-la</h2>
+      <p class="sub">Tap panna perusa open aagum. Onnu rendu photos-ku pinnaadi konjam secrets irukku — double-tap panni paaru.</p>
+    </div>
+    <div class="film" id="film" aria-label="photo memories — horizontal scroll"></div>
+  </section>
+
+  <!-- ════════════════ OUR LITTLE THINGS (words) ════════════════ -->
+  <section id="words">
+    <div class="wrap reveal">
+      <div class="kicker">the language only we speak</div>
+      <h2 class="title">Nammaloda vaarthaigal</h2>
+      <p class="sub">mathavangaluku lam dictionary. Nammakku itha masseyyy. Tap to flip (panni paaru).</p>
+      <div class="words" id="wordsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ OUR SONGS ════════════════ -->
+  <section id="songs">
+    <div class="wrap reveal">
+      <div class="kicker">nee paadi · naan save pannadhu</div>
+      <h2 class="title">nee ஒளித்த ஒலிகள்</h2>
+      <p class="sub"><span lang="ta" style="color:var(--gold-soft)">சனாவின் குரலில் — எனக்காகப் பாடியவை</span><br>
+      Un voice-la paadi unakke dedicate pandren paathiya , maja vaa</p>
+      <div class="songs" id="songList"></div>
+      <!-- <div class="songs-note">🎵 sabr note: real MP3s ah <code>assets/audio/</code>-la same file name-la pottu replace pannunga. No autoplay — un touch-la dhaan music.</div> -->
+    </div>
+  </section>
+
+  <!-- ════════════════ MIDNIGHT NOTES — for when you miss me ════════════════ -->
+  <section id="midnight">
+    <div class="wrap reveal">
+      <div class="kicker">for the moments between us</div>
+      <h2 class="title">Nee miss pannum bodhu — inga vaa</h2>
+      <p class="sub">Ettu moon-notes. Ovvoru note-ah touch pannumbodhum, thirumbi thirumbi padikka thonra maadhiri, ulla unakkaaga naan vechirukkura oru chinna line irukkum.
+      Ellathayum open pannitta, amaidhiya innoru batch varum. Medhuva padi. Feel pannitu padi. 🤍</p>
+      <div class="mn-grid" id="mnGrid"></div>
+      <div id="mnCount" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ READ ME WHEN — DUA JAR ════════════════ -->
+  <section id="jar">
+    <div class="wrap reveal">
+      <div class="kicker">read me when…</div>
+      <h2 class="title">Oru chinna jar, periya prayers</h2>
+      <p class="sub">Ithu oru digital glass jar. Ulla irukka notes — oru feeling-ku oru ayah + oru chinna message.
+      Sutthi paaru, lid-ah open pannu, un mood-ku tagundha note ah eduko.</p>
+      <div class="jar-zone">
+        <div class="jar-stage" id="jarStage" aria-label="interactive dua jar — drag to rotate, tap to open">
+          <div class="jar3d" id="jar3d"></div>
+          <div class="jar-shine" aria-hidden="true"></div>
+          <div class="jar-shadow" aria-hidden="true"></div>
+        </div>
+        <div class="jar-hint" id="jarHint">↺ drag to rotate · tap to open the lid ↺</div>
+        <div class="feels" id="feels" role="group" aria-label="choose your feeling"></div>
+        <div class="pick-row" id="pickRow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ 20 DUAS (preserved) ════════════════ -->
+<section id="duas">
+  <div class="wrap reveal">
+    <div class="kicker">the real gift</div>
+    <h2 class="title">Twenty duas, not twenty candles</h2>
+    <p class="sub">
+      Unakku candles avlo pidikkaadhu… adhuvum midnight-la
+      erinjittu konja nerathula anaindhudum.
+      Aana indha gift appadi illa, thangam.
+      Un 20 years-ku, ovvoru year-ukkum oru dua. 🤲
+      Medhuva tap pannu, Sana. Unakkaaga manasaara ketta
+      irubadhu duas unakkaaga kaathirukku. 🤍
+    </p>
+    <button id="randomDua">✦ &nbsp;gift me a random dua&nbsp; ✦</button>
+    <div class="dua-grid" id="duaGrid"></div>
+  </div>
+</section>
+
+
+  <!-- ════════════════ THE AYAH (preserved) ════════════════ -->
+  <section id="ayah">
+    <div class="wrap reveal">
+      <div class="kicker">the verse I keep coming back to</div>
+      <div class="ayah" style="margin-top:30px">
+        <svg class="star8 star-corner tl" viewBox="0 0 40 40"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+        <svg class="star8 star-corner tr" viewBox="0 0 40 40"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+        <svg class="star8 star-corner bl" viewBox="0 0 40 40"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+        <svg class="star8 star-corner br" viewBox="0 0 40 40"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+        <div class="ar ayah-ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+        <p class="ayah-en">"And among His signs is that He created for you spouses from among yourselves,
+        so that you may find peace in them — and He placed between you love and mercy."</p>
+        <div class="ayah-ref">Qur'an 30:21 · Surah Ar-Rum</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ TAHAJJUD — the last third of the night ════════════════ -->
+  <section id="tahajjud">
+    <div class="wrap reveal">
+      <div class="kicker">that 3 am of the night</div>
+      <h2 class="title">Un tahajjud-la, naan oru dua</h2>
+      <p class="sub">Nee oru naal sonna — "you are my tahajjud dua" nu. Andha naalu words, en heart-la innum ninnutu irukku.
+      So andha nerathukku, ingeyum oru chinna corner.</p>
+      <div class="taj-wrap" id="tajWrap">
+        <div class="taj-ar" lang="ar">يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الْآخِرُ، يَقُولُ: مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ، وَمَنْ يَسْأَلُنِي فَأُعْطِيَهُ، وَمَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ</div>
+        <p class="taj-en">"Our Lord, Blessed and Exalted, descends every night to the lowest heaven when the last third
+        of the night remains, and says: Who is calling upon Me, that I may answer him? Who is asking of Me, that I may
+        give him? Who is seeking My forgiveness, that I may forgive him?"</p>
+        <div class="taj-ref">Sahih al-Bukhari 1145 · Sahih Muslim 758b</div>
+        <div class="taj-note" id="tajNote"></div>
+        <div id="tajNow" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ ENVELOPES — THINGS I NEVER SAY ENOUGH ════════════════ -->
+  <section id="letters">
+    <div class="wrap reveal">
+      <div class="kicker">sealed with a wax and a prayer</div>
+      <h2 class="title">Things I Never Say Enough</h2>
+      <p class="sub">Etra envelopes. Tap panna open aagum — ulla irukka letter-ah touch panni full-ah padiyen konjam.</p>
+      <div class="env-grid" id="envGrid"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ OUR FUTURE — IN SHA ALLAH ════════════════ -->
+  <section id="future">
+    <div class="wrap reveal">
+      <div class="kicker">if Allah wills</div>
+      <h2 class="title">Namma pixel dreams — In Sha Allah</h2>
+      <div class="future-hero reveal">
+        <img src="assets/images/memory-10-kaaba.jpg" alt="the Kaaba under a starry night sky" loading="lazy">
+        <div class="fh-in">
+          <div class="ar" lang="ar">إِنْ شَاءَ اللهُ</div>
+          <p>"Some dreams are too beautiful to promise in words. So I leave them with Allah —
+          and one day, inshaAllah, we'll stand there together, raising our hands side by side."</p>
+        </div>
+      </div>
+      <div class="dreams" id="dreamGrid"></div>
+      <div class="marriage reveal">
+        <p>"I may not know what Allah has written for us yet. I may not be able to promise every detail today —
+        not the place you dream of, not the day. But I know what I quietly pray for, every single time my forehead touches the mat."</p>
+        <small>Nee nenakkura andha sacred place-la, namma Nikkah nadakkanum nu naanum manasaara aasai paduren, thangam. Adhu nadakkum nu guarantee panna mudiyaadhu, aana adhukkaaga dua panradha mattum naan nirutha maaten. Namma kanavugalai vida azhagaana plans Allah-kitta irukku nu namburen. Adhanaala namma aasaiyaiyum, namma future-aiyum, thirumba thirumba Allah-kitta oppadaichitte irukken. In Sha Allah, Allah namakku edhu best-o, adha azhagaana nerathula nadathuvaan. 🤲🏻🤍</small>
+      </div>
+      <div class="future-line" id="futureLine" aria-label="future wishes timeline"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FINAL LETTER ════════════════ -->
+  <!-- ✏️ EDIT THIS LETTER — say it in your own words, she knows your voice -->
+<section id="final">
+  <div class="wrap reveal">
+    <div class="kicker">the last page · for now</div>
+    <h2 class="title">Oru kadidham, climax-la</h2>
+    <div class="letter-big">
+      <h3>Thangameyyyy,</h3>
+
+      <p>
+        Ippo indha site-oda last page-ku vandhuttom.
+        Aana idhukkulla evlo vishayangal irukku theriyuma?
+        Namma kadhaiya sollura oru chinna book, namma memories-ah
+        appadiye freeze panni vechurukkura moments, un songs-kaana
+        oru chinna concert hall, un feelings ovvonnukkum oru jar full-ah
+        duas, unakkaaga ezhudhunna letters, namma future dreams,
+        appuram twenty candles-ku badhila unakkaaga irubadhu duas.
+        Idhellam serndhu, namma rendu perukkum mattum puriyura
+        oru chinna ulagam maadhiri irukku. 🤍
+      </p>
+
+      <p>
+        Edhukku idhellam pannen theriyuma?
+        Romba simple, dii. Nee enna miss panra nerathula,
+        midnight aagirundhaalum, un mood off-ah irundhaalum,
+        illa ennaala udane reply panna mudiyama ponaalum,
+        nee inga thirumbi varalaam. Indha page-ah open panni,
+        namma memories-ah paakkalaam, un favourite songs-ah kekkalaam,
+        unakkaaga naan ezhudhi vecha words-ah padikkalaam.
+        Naan pakkathula illaadha nerathulayum, en paasam unakku
+        konjamavadhu feel aaganum nu dhaan idhellam panninen.
+        Nee inga varumbodhellam, en voice un kooda irukkura maadhiri
+        feel aaganum, qalbii. 🫂
+      </p>
+
+      <p>
+        Namma perfect illa. Sandaiyum vandhirukku, misunderstandings-um
+        irundhirukku, sila neram pesama irundha moments-um irundhirukku.
+        Aana ellathukkum naduvula, namma bond-ah purinjukka,
+        orutharoda oruthar feelings-ah ketka, thirumba thirumba
+        orutharai oruthar choose panna try pannirukkom.
+        Enakku adhu dhaan love-la romba azhagaana vishayam.
+        Love panren nu solradhu mattum illa, kashtamaana nerathulayum
+        care pannradhu, purinjukka muyarchi panradhu, thappu panninaa
+        adha othukkuradhu, serndhu better-ah valar radhu —
+        idhellam dhaan oru bonding-ah special aakkudhu. ❤️
+      </p>
+
+      <p>
+        Un twentieth year ippadi azhaga aarambichirukkuradhai
+        paakkumbodhu, oru vishayam sollanum nu thonudhu.
+        Birthday unakku dhaan, aana gift kidaichadhu enakkum dhaan —
+        because en life-la nee irukka.
+        Allah unna en vazhkaila oru azhagaana ni'mah-ah
+        thandhirukkaan nu nenachaa, enakku manasula happiness dhaan varudhu.
+        Unna naan sandhichadhu, unna therinjukittadhu,
+        un kooda indha memories ellam create panradhu —
+        idhellathukkum Alhamdulillah. 🤲🏻
+      </p>
+
+      <p>
+        Namma future eppadi irukkum nu enakku ella details-um theriyadhu,
+        thangam. Aana namma rendu perukkum nalladhu nadakkanum,
+        namma bond-la love-um rahmah-vum irukkanum,
+        Allah namma vazhiya barakah-oda nirappanum nu
+        manasaara dua panren.
+        Nee en kooda irukkura ovvoru naalum special dhaan.
+        Namma kanavugal ellam nalla nerathula,
+        nalla vazhiyila niraiveranum. In Sha Allah. 🤍
+      </p>
+
+      <p>
+        So, kadaisiya namma style-la sollanum-na…
+        Lubb you so much, Sana Thangameyy.
+        Habun u — innikku mattum illa, ovvoru naalum,
+        un ovvoru mood-layum, Allah namakkaaga ezhudhura
+        ovvoru pudhu chapter-layum.
+        Namma rendu perukkum nalladhu edhuvo,
+        adhai Allah namakku azhagaana vazhiyila tharanum.
+        Ameen. 🤲🏻❤️
+      </p>
+
+      <p class="sig">
+        — un Sabr ♥
+        <small>unakku porumaiya irukka kathukittu irukkura un Sabr · yours zawji insha allah</small>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <svg class="star8" id="footerStar" viewBox="0 0 40 40" style="width:14px;height:14px" aria-label="one last secret"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+    <div class="names">Sabr 🤍 Sana &nbsp;·&nbsp; 21 July → 18 October → forever, inshaAllah</div>
+    <div>made with duas, code &amp; oru manasu that beats only for my qalbiiii</div>
+    <div id="lastSecret">nalla iruppa, thangam. un smile-ku dhaan ithu ellam. 🤍</div>
+  </footer>
+</main>
+
+<!-- ════════════════ OVERLAYS ════════════════ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="photo viewer">
+  <button class="lb-btn lb-close" aria-label="close photo">✕</button>
+  <button class="lb-btn lb-prev" aria-label="previous photo">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-btn lb-next" aria-label="next photo">›</button>
+</div>
+<div class="unfold" id="unfold" role="dialog" aria-modal="true">
+  <div class="paper-card" id="paperCard"><button class="unfold-x" id="unfoldX" aria-label="close">✕</button><div id="paperBody"></div></div>
+</div>
+<div id="secret" role="dialog" aria-modal="true">
+  <div class="secret-card">
+    <h3>You found the hidden moon 🌙</h3>
+    <p>Then you deserve the secret it was guarding:</p>
+    <span class="ar" lang="ar">رَبِّ اجْعَلْهَا قُرَّةَ عَيْنٍ لِي فِي الدُّنْيَا وَالْآخِرَةِ</span>
+    <p style="font-size:.95rem">"Ya Allah, make her the coolness of my eyes — in this dunya and in the akhirah."<br><br>It's the dua I whisper in every sujood since July 21st. Ippo therinju pochu — secret-aa innum illa, thangam. 🤍</p>
+    <button id="secretClose">close</button>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   ✏️✏️✏️  EDIT ZONE — all personal content lives here  ✏️✏️✏️
+   ═══════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  START: "2026-07-21T00:00:00+05:30",   // journey start (July 21, Kannadavar Park)
+  BDAY:  "2026-10-18T00:00:00+05:30",   // her birthday
+  typedLines: ["my Thangameyy ✦", "ya Qalbi", "Ya Ruhi", "Ya Hayati","lubb you so much, Sana 🤍",
+               "habun u — always ✦", "my Forever", "my forever dua", "missing you, always ✦",
+               "twenty years of noor — Alhamdulillah","Eid Milad Saeed - kanneyyy","Happy 20's di mineyyy"]
+};
+
+/* ————— 📖 STORY BOOK · page types: cover | dedication | chapter | photo | collage | note | quote | backcover ————— */
+const BOOK_PAGES = [
+  { t:"cover" },
+  { t:"dedication", html:"Thangameyy-kku mattumeyyy.<br><br>Ithu unakku mattum padacha oru chinna book —<br>medhuva thiruppu, oru oru page-um paaru maja va irukum.<br><br>— zawji" },
+  { t:"chapter", ch:"mudhal kadhai", title:"munnadi namba", july:false,
+    text:"April 2026. Onnume plan pannala — just fun conversations, jolly-a pesi friends aanom. Konjam konjama personal things share pannikitom, close aanom.But ellame unexpected a nadandhu ipo together a irukurom , from strangers to soulmates , now making love on each other." },
+  { t:"photo", src:"cake.jpeg", alt:"two warm cups on a balcony at night",
+    cap:"long talks, no clocks — those first evenings" },
+  { t:"chapter", ch:"first moment", title:"chinnadha oru happiness", july:false,
+    text:"Oru naal Instagram reel-la chocolate paathu, naan jolly-ah vangi kudu nu ketten. Nee nijamavey anupi vutta, Andha thank-you review video lam kooda na poten maja va — nee impress aana, happy aana. Chinna vishayam. Periya memory. That's us in one sentence." },
+  { t:"collage", items:[
+      {src:"silk_chocolate.jpeg", cap:"the first silk chocolate 💌"},
+      {src:"selfie1.jpeg", cap:"chinna gifts, periya feelings , adhuvum andha dream cake uh lam vera level , photo dhan ilaa"},
+      {src:"filter-snap.jpeg", cap:"maja va andha filtered snaps um"}] },
+  { t:"chapter", july:true, ch:"official mudhal sandhippu", title:"JULY 21 · The Day",
+    text:"Namma kadhai-oda major milestone eh Tower Park uh dhan , anga dhan nammaloda kadhal arambichadhu. Appidiye edho strong bond feel aachi. Explanation illa. Words illa. Just… antha naal. Ippo varaikkum andha date-ah paatha, en heart 'ours' nu sollum. <b>July 21 namalodadhu diii 😘.</b>" },
+  { t:"photo", src:"silk_chocolate.jpeg", alt:"a park bench under a dusk sky", cap:"tower park — our place, always" },
+  { t:"chapter", ch:"parisu", title:"The kutty Gifts", july:false,
+    text:"En side-la irundhu oru diary milk silk uh. Un side-la irundhu oru dream cake. Simple ah irundhuchu — aana adhu memorable aana onnu. Gifts perusa illanu illa. Feelings perusa irundhuchu — adhu pothum doneyyyy." },
+  { t:"photo", src:"kutty.jpeg", alt:"a diary and a small cake with candles", cap:"" },
+  { t:"chapter", ch:"kadal", title:"An Unplanned Beach Day", july:false,
+    text:"plan ilama edho oru wednesday la — suddenly marina beach ponom ! Photos eduthom, oru vai ku oruthar mari mari feed pannikittom chinna pasanga maari. Silly. Warm. Perfect. Unplanned days dhaan best memories kudukkum — andha naal dhan adha prove pannuchu." },
+  { t:"photo", src:"beach.jpeg", alt:"sunset over the sea", cap:"the sea saw us being children 🌊" },
+  { t:"note", html:"beach aprm oru confession.<br><br>Andha naal mudija odane dhaan therinjathu:<br>nee kooda irukkum bodhu <i>time parakkum</i>,<br>illaadha bodhu <i>time nadakave maateengudhu.</i><br><br>— missing-you report, signed sabr 🖋" },
+  { t:"chapter", ch:"plan pannadhadhu", title:"The Movie That Never Happened", july:false,
+    text:"Movie ku plan pannom, serious-a. Aana andha naal movie-ku pogama,padi la edho oru park la ukkkandhu atti uttoommmm We roamed, saptom, places sutthinom, aprom veedu. Best. Cancelled. Plan. Ever. 10/10 , but niraya capture pannom enoda hand la sana ndra mehandi design aprm namma sapta icecreams,shopping lam  — innum oru naal movie-miss-a enjoy pannalam." },
+  { t:"photo", src:"park.jpeg", alt:"an empty glowing cinema screen", cap:"sold out… by us" },
+  { t:"chapter", ch:"majavana mall", title:"VR Mall", july:false,
+    text:"VR Mall full ah sutthinom. t-shirts, konjam innum clothes/pants — naan vangi kuduthen. Unakku pidichirundhuchu — adha nee trip la pottu nee maja panta. Nee carry pannina andha chinna vishayam — enakku periya pride." },
+  { t:"photo", src:"vrmall.jpeg", alt:"warm mall lights at night", cap:"successful shopping mission ✔" },
+  { t:"note", html:"next pages…<br>un real photos-uh konjam wait pannudhu 📸" },
+  { t:"quote", html:"“We're becoming perfect.<br>uNamma relationship-um apdi dhan.<br>still keep choosing each other —<br>understanding, forgiving, trying again.<br><br><b>Adhu dhaan nammaloda maja vaaa.</b>”" },
+  { t:"backcover" }
+];
+
+/* ————— 📸 MEMORY GALLERY · replace src with real photos, keep captions ————— */
+const PHOTOS = [
+  { src:"hands.jpeg", cap:"inaindha kaigal", alt:"park bench at dusk" },
+  { src:"payanam.jpeg", cap:"unnoda modhal trip la sendoff kaga naan", alt:"two cups on a balcony" },
+  { src:"devadhai.jpeg", cap:"devadhai a still theriyiradhukana reason", alt:"beach sunset", egg:"ps: antha naal nee pottina smile — my memory list-la no.1. — sabr" },
+  { src:"babyus.jpeg", cap:"our little cuties , poo pota paapa , poo podadha paapa ", alt:"rain on a window" },
+  { src:"bracelets.jpeg", cap:"connected soulmates", alt:"mall lights" },
+  { src:"shirtgift.jpeg", cap:"nee kudutha shirt la naan ", alt:"a single rose" },
+  { src:"aesthetic.jpeg", cap:"unnnoda favourite aesthetic pic uh ", alt:"a small gift box" },
+  { src:"mandi.jpeg", cap:"namaloda first mandi", alt:"hanging lanterns" }
+];
+
+/* ————— 💬 OUR LITTLE THINGS · t:title n:native tag:category f:flip note ————— */
+const WORDS = [
+  { t:"Thangameyy", n:"தங்கமே", tag:"tamil · my gold", f:"neeyum nanum salikama soldra andha thangameyyy dhan nammaloda love a inum build panitu iruku" },
+  { t:"Ya Qalbi", n:"قَلْبِي", tag:"arabic · my heart", f:"The word I reach for when 'Sana' feels too small — oru vaarthai-la ennoda motha anbayum unmela adakkarthukku." },
+  { t:"Ya Ruhi", n:"يَا رُوحِي", tag:"arabic · my soul", f:"Heart-ku mela irukka edathu-la irundhu vara vaarthai. Not just love — full surrender." },
+  { t:"Ya Hayati", n:"يَا حَيَاتِي", tag:"arabic · my life", f:"Life itself nu solradha scene illa — nee vandha aprom dhaan life-ku edho perusa kedacha maari oru moment." },
+  { t:"My Forever", n:"my forever", tag:"english ·  translation theva ila dhan , adhuvae infinity nu solalam", f:"Forever-nu force-a solala. Natural-ah varum. Neela vaanam mathiri — end illa. ✦" },
+  { t:"zawji", n:"زَوْجِي", tag:"arabic · her word for me", f:"Feelings full aagum bodhu nee sollura vaarthai. Every letter-ah naan save pannikiren — nammaloda nikkah la imam official-ah soldra varaikkum. adhuku aprm unoda zawji dhan always" },
+  { t:"Habun u", n:"habun u", tag:"short-form · love you", f:"Long-ah solla time illa-nu short-cut — aana ulla ulladhu weight kammi illa." },
+  { t:"LUBBB, U SO MUCH", n:"lubb u sm", tag:"full version · with feeling", f:"'lubb you so much, Sana Thangameyy' nu just soldradhu mattum ila , ennoda soul la irundhu vara oru emotion adhu" }
+];
+
+/* ————— 🎵 SONGS · drop real MP3s in assets/audio with the SAME names ————— */
+const SONGS = [
+  {
+    num: "01",
+    title: "Nila Nee Vaanam Kaatru…",
+    tamil: "நிலா நீ வானம் காற்று",
+    movie: "Pokkisham",
+    note: "Sila songs memories-ah nyabagapaduthum, aana indha song mattum unna nyabagapaduthaama irundhadhe illa 🤍🌙",
+    src: "anbulla.ogg",
+    fav: true
+  },
+  {
+    num: "02",
+    title: "Aaruyire Mannipaaya",
+    tamil: "ஆருயிரே மன்னிப்பாயா",
+    movie: "Guru",
+    note: "Un voice-la indha song kekkuradhu oru thani feeling… ovvoru vaarthaiyum en heart-ku romba close-ah irukku 🥹❤️",
+    src: "aaruyire.ogg"
+  },
+  {
+    num: "03",
+    title: "Unnale",
+    tamil: "உன்னாலே",
+    movie: "Theri",
+    note: "Nee super-ah paadi, first pin aana song idhu… un voice-ku naan fan aanadhula irundhu indha song-ku oru special place irukku 🌷🎶",
+    src: "sana-theri-unnale-song.ogg"
+  },
+  {
+    num: "04",
+    title: "Penne Orumurai",
+    tamil: "பெண்ணே ஒருமுறை",
+    movie: "Album Song",
+    note: "Un voice-la indha song kekkumbodhu, konjam neram ulagam motham silent aana nalla irukkum pola 🎧💗",
+    src: "penne-orumurai.ogg"
+  }
+];
+/* ————— 🏺 DUA JAR · verified ayahs/hadith only · msg = Sabr's personal notes ————— */
+const JAR = [
+  { emoji:"💙", label:"when you're happy", color:"#a8c8ea", notes:[
+    { ar:"وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ", tr:"And as for the blessing of your Lord — proclaim it.", ref:"Qur'an 93:11 · Surah Ad-Duha",
+      msg:"Un smile dhaan enakku romba pidicha sight. Inniku nee happy-ah irukkuradhe oru ni'mah. Un blessings ellathayum count pannumbodhu, naanum un life-la oru chinna happiness-ah irukkanum nu aasai paduren. 🤍" },
+    { msg:"Inniku nadandha happy moments-ah photo-va illa oru chinna note-ah save panni vechikko. Oru naal thirumbi paakkumbodhu, indha memories ellam namma treasure-ah irukkum. 🥹💙" }
+  ]},
+
+  { emoji:"🩵", label:"when you miss me", color:"#a9d6e5", notes:[
+    { msg:"Enna miss panriya, thangameyy? Unakku mattum illa, enakkum adhe feeling dhaan. En heart-la unakku oru special seat illa… motha heart-um unakku dhaan reserved. Va seekiram. 🩵🫂" },
+    { msg:"Distance namma rendu perayum konjam dhoorathula vechirukkalaam. Aana namma memories-ah yaaralayum dhoorama kondu poga mudiyadhu. July 21 memories-a thirumbi paathuttu, naan pakkathula irukkura maadhiri feel pannu. 🤍" }
+  ]},
+
+  { emoji:"💜", label:"when you're sad", color:"#cbb6ec", notes:[
+    { ar:"لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا", tr:"Do not despair of Allah's mercy. Indeed, Allah forgives all sins.", ref:"Qur'an 39:53 · Surah Az-Zumar",
+      msg:"Ellaa naalum happy-ah irukkanum nu avasiyam illa, thangam. Sila naal azhanum thonum, sila naal summa amaidhiya irukkanum thonum. Un feelings-ah adakki vechikkaadha. Konjam azhudhu manasa lighten pannikko. Allah-oda rahmath eppovume irukku, naanum un kooda irukken. 💜🫂" },
+    { msg:"Chai pottukko, blanket-ah porthikko, konjam rest edu. Pesanum-na en kitta pesu; azhanum-na azhu. Enna thittanum-na kooda thittikko. Un mood seri aagura varaikkum naan un side dhaan. 🥹☕" }
+  ]},
+
+  { emoji:"❤️", label:"when you're angry", color:"#f2b3b3", notes:[
+    { ar:"لَا تَغْضَبْ", tr:"Do not become angry.", ref:"Prophet Muhammad ﷺ · Sahih al-Bukhari 6116",
+      msg:"Konjam deep breath edu, thanni kudi, mudinja wudu pannikko. Kovam konjam koranja apram pesalaam. En mela kovama irundhaalum parava illa, thangam… aana un manasa kashtapaduthikkadha. Unna sirikka vaikka naan innum neraya irukken. ❤️😌" },
+    { msg:"Namma rendu perum sandai podumbodhu, idha mattum marandhudaadha: namma rendu perum opposite teams illa. Namma rendu perum serndhu problem-ah face panra team. Ego-va vida namma bond perusu, thangam. 🫶🏻❤️" }
+  ]},
+
+  { emoji:"💛", label:"when you're anxious", color:"#f0dfae", notes:[
+    { ar:"لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا", tr:"Allah does not burden a soul beyond what it can bear.", ref:"Qur'an 2:286 · Surah Al-Baqarah",
+      msg:"Ippo un manasula evlo thoughts odinaalum, ellathayum ore nerathula solve pannanum nu ninaikkadha. Oru deep breath edu, Allah-va nambi, ovvoru step-ah eduthu vai. Innaikku mudinja alavukku pannina podhum, thangam. Nee thaniya idhellam face panna vendiyadhilla. 💛🤲" },
+    { msg:"Un mind ippo worst-case scenarios ellam imagine pannalaam. Aana ovvoru thought-um unmai aagidanum nu illa. Nee kadandhu vandha kashtamaana naatkalai konjam ninaichu paaru. Avvalavu naalum nee manage pannirukka. Indha naalayum medhuva kadandhuduva, one step at a time. 🫂💛" }
+  ]},
+
+  { emoji:"💚", label:"when you need hope", color:"#bfe3c8", notes:[
+    { ar:"فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا", tr:"So, surely with hardship comes ease. Surely with that hardship comes more ease.", ref:"Qur'an 94:5–6 · Surah Ash-Sharh",
+      msg:"Kashtam mattum dhaan un life-la irukku nu thonra nerathula, indha ayah-ah nyabagam vechikko. Allah rendu thadava ease pathi sollirukkaar. Ippo vazhi theriyalainaalum, nambikkaiya vidaadha. InshaAllah, indha kashtathukkum oru ease varum. 💚🤲" },
+    { msg:"Padathula interval vandha udane story mudinjiduchu nu artham illa, illaya? Adhe maadhiri, ippo un life-la kashtamaana chapter irukkuradhunaala un story mudinjiduchu nu artham illa. Innum azhagaana pages vara irukku, thangam. Keep going. 🌱💚" }
+  ]},
+
+  { emoji:"🤍", label:"when you need peace", color:"#e8e4da", notes:[
+    { ar:"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ", tr:"Verily, in the remembrance of Allah do hearts find rest.", ref:"Qur'an 13:28 · Surah Ar-Ra'd",
+      msg:"Manasu romba noisy-ah irukka, thangam? Konjam phone-ah side-la vechuttu, medhuva moochu vittu, Allah-va ninaichu dhikr pannu. 'SubhanAllah', 'Alhamdulillah', 'Allahu Akbar' nu medhuva sollu. Ella problem-um udane maraiyaama irukkalaam, aana indha chinna nerathai Allah-voda ninaivoda spend pannu. 🤍🕊️" },
+    { msg:"Manasukku amaidhi thedumbodhu, konjam neram sujood-la iru, thangam. Un manasula irukkuradha Allah-kitta sollu. Yaarukkum explain panna mudiyadha feelings kooda Allah-kku theriyum. Konjam neram duniya-va marandhuttu, Avan kitta manasa open pannu. 🤲🏻🤍" }
+  ]},
+
+  { emoji:"🩷", label:"when you need to feel loved", color:"#f3c7d4", notes:[
+    { msg:"Thangameyy, unakku eppovaavadhu nee evlo loved nu doubt vandhaa, indha note-ah thirumbi padi. Un smile enakku special, un happiness enakku mukkiyam, un sadness enakku concern. Nee perfect-ah irukkanum nu illa; nee neeya irundhaale podhum. Lubb you so much. 🩷🥹" },
+    { msg:"Unakku oru proof list venuma? Un smile-ah paakka naan wait pannuven, un kashtatha ketka naan time eduppen, unakkaaga dua seiven, nee tired-ah irundhaa unakku comfort-ah irukka try pannuven. Idhellam periya vishayama theriyama irukkalaam, aana enakku nee mukkiyam nu kaattura chinna chinna ways idhu dhaan. You're loved, thangam. 🤍🫶🏻" }
+  ]},
+
+  { emoji:"🌙", label:"when you feel alone", color:"#b9c8e3", notes:[
+    { ar:"وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ", tr:"And We are closer to him than his jugular vein.", ref:"Qur'an 50:16 · Surah Qaf",
+      msg:"Thangam, indha ulagatthula yaarum un feelings-ah purinjukkala nu thoninaalum, Allah unakku theriyadha alavukku kooda un manasa arivaar. Nee sollaadha sogamum, veliya kaattaadha kanneerum Avanukku theriyum. Un loneliness-la kooda Allah-va ninaichukko. Naanum un kooda pesa inga irukken. 🌙🤍" },
+    { msg:"Night-la ellarum thoongitta apram thaniya feel aagudha, thangam? Indha jar-ah open pannina udane, unakku oru chinna reminder: nee important, nee loved, un feelings mukkiyam. Mudinja enakku message pannu; un manasula irukkuradha pesalaam. 🫂🌙" }
+  ]},
+
+  { emoji:"✨", label:"when you need a reminder of Allah", color:"#ecd9a8", notes:[
+    { ar:"فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ", tr:"So remember Me; I will remember you. And be grateful to Me and do not deny Me.", ref:"Qur'an 2:152 · Surah Al-Baqarah",
+      msg:"Chinna chinna moments-la kooda Allah-va ninaichukko, thangam. Sandhoshama irundhaa 'Alhamdulillah', azhagaana edhavadhu paathaa 'SubhanAllah', kashtam vandhaa Avan kitta dua kelu. Dhikr panna special time thevai illa; un daily life-la medhuva serthukko. ✨🤍" },
+    { msg:"Phone lockscreen unakku notifications kaattum; aana Qur'an un manasukku vazhi kaattum. Inniku konjam neram Qur'an padikka illa adhu enna solludhu nu yosikka othukko. Evlo busy-ah irundhaalum, Allah-kkaaga sila nimishangal vechukko, thangam. 📖✨" }
+  ]},
+
+  { emoji:"🤲", label:"when you need a dua", color:"#a9ddd0", notes:[
+    { ar:"وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ", tr:"And your Lord says: Call upon Me; I will respond to you.", ref:"Qur'an 40:60 · Surah Ghafir",
+      msg:"Enna venum, edhu manasa kashtapaduthudhu, edha nenachu bayapadura nu ellathayum Allah-kitta sollu, thangam. Azhudhe dua panninaalum parava illa; vaarthaigal varalainaalum parava illa. Un manasula irukkuradhu Avanukku theriyum. Namma rendu perum serndhu dua pannalaam. Ameen. 🤲🏻🤍" },
+    { msg:"En dua-gal-la unakkaana idam eppovume irukkum, thangam. Un health, un happiness, un imaan, un future — ellathukkum Allah-kitta dua keppean. Namma rendu perukkum nalladhu edhuvo, adha Allah azhagaana vazhiyila thandhu, namma bond-la barakah kudukkanum. Ameen. 🩷🤲🏻" }
+  ]}
+];
+
+const JAR_SECRET = {
+  msg:"Secret note kidaichiduchu! ✨ Thangam, nee dull-ah irukkura naatkal-la kooda, un smile thirumbi vara naan ennaala mudinja chinna chinna vishayangal pannitte iruppen. Un sabr-ku azhagaana sandhosham kidaikkanum, un dua-galukku nalla badhil kidaikkanum nu manasaara dua panren. Lubb you so much, Sana Thangameyy. Ippo indha note-ah close pannittu, enakkaaga oru chinna smile pannu paakkalaam. 😌🤍 — S"
+};
+
+/* ————— 🌙 MIDNIGHT NOTES · miss-you lines (no ayahs here — just sabr's voice) · add more anytime ————— */
+
+const MISS_NOTES = [
+  "Midnight 12:47. Thookam varala. Kannai mooduna un smile dhaan nyabagam varudhu. Unna nenachitte irundha, thookam kooda enna marandhuduchu pola. 😌🤍",
+
+  "Tea kudikka ukkandha udane, nee pakkathula irundha nalla irukkume nu thonudhu. Oru cup tea dhaan, aana nee illaama andha chinna moment kooda complete aagala, thangam. ☕❤️",
+
+  "Namma beach-la nadandha moments ellam innum en manasula appadiye irukku. Kadalla ezhudhunaa un per alaila azhinjidum, aana en manasula ezhudhunadhu endha alai vandhaalum azhiyaadhu. 🌊🤍",
+
+  "Nee 'lubbb' nu message pannumbodhu, phone screen mattum illa, en face-um serndhu smile pannum. Evlo tired-ah irundhaalum, un oru message podhum en mood-ah maatha. 🥹💗",
+
+  "Jannal orama mazhai, kaiyila chinna chai, suththi amaidhi. Ellame azhaga dhaan irukku. Aana nee pakkathula illaadha andha oru kurai mattum, indha amaidhiyai kooda satham maari feel panna veikkudhu, thangam. 🌧️☕",
+
+  "Unna miss panradhu enna weak aakkala. Un mela enakku evlo paasam irukku nu dhaan puriya veikkudhu. Nee en life-la evlo special nu, nee illaadha nerathula dhaan innum adhigama theriyudhu. 🫶🏻",
+
+  "Inniku nee saaptiya, happy-ah irukkiya, nalla thoonguniya nu therinjukkanum pola irundhuchu. Unna pathi chinna chinna vishayangal kooda therinjukkanum nu thonradhu dhaan enakku love-na enna nu solludhu pola. ❤️",
+
+  "Naan evlo busy-ah irundhaalum, oru chinna gap kidaicha podhum, en thoughts unna thedi vandhudum. Unna nenakka naan time othukka vendiyadhu illa, thangam. En manasu automatic-ah unna dhaan thedudhu. 🥹🤍",
+
+  "Distance namma rendu perayum pirichu vechirukkalaam. Aana naan kannai moodi unna nenacha, nee en pakkathula irukkura maariye feel aagudhu. Dhooram kilometres-la irukkalaam, aana en manasula nee eppovume pakkathula dhaan. 🌙❤️",
+
+  "Un voice message-ah rendu thadava ketten. First time nee enna sonna nu kekka, second time nee pesura andha voice-ah mattum rasikka. Un voice-la enakku theriyura oru comfort, vera edhula yum kidaikkala. 🎧💗"
+];  
+const MISS_FINALE = "Ellam paathacha? Truth time: ithu ellam summa illa — en qalbi-ku vechirukka oru tiny archive thaan. Innum neraya irukku, adhukellam nee nerla paakanum apo dhan kedaikum. 🤍 — sabr";
+
+/* ————— 🕌 TAHAJJUD · hadith verified (Bukhari 1145 · Muslim 758b) · edit only the note + night times ————— */
+const TAJ = {
+  note: "Thangam — nee andha amaidhiyana nerathla kai thookum bodhu, en per irukkume nu enakku theriyum. Adhu vida periya honour naan enga vaanguvan? You made me a dua, not a demand. So en side-lendhu oru chinna aasai dhaan: un dua ellam niraivettuvadhaaga. Adhula naan irundha… innum happy. — sabr, un tahajjud dua-vil oru chinna idathukku aasai pattavan",
+  MAGHRIB: "18:18",   // chennai approx sunset — used only for the gentle last-third hint
+  FAJR:  "04:45"      // chennai approx fajr
+};
+
+/* ————— 💌 LETTERS · envelopes ————— */
+const LETTERS = [
+  {
+    title: "One thing I admire about you",
+    sub: "letter 01",
+    body: "Un deen dhaan naan unnidam first admire panna vishayam, Sana. Allah mela nee vechirukkura nambikkai, un values-ah nee pidichu nikkura vidham, ellathayum nee approach panra andha azhagaana softness — idhellam enakku romba special. Nee perfect-ah irukkanum nu illa; un faith-um, un heart-um sincere-ah irukkuradhe enakku azhagu. First admire pannadhu innum admire pannitte dhaan irukken, thangam. 🤍"
+  },
+  {
+    title: "Something you changed in me",
+    sub: "letter 02",
+    body: "Nee ennai maathanum nu oru naalum force pannadhe illa. Aana unna love panna aarambichadhukku apram, naan enna better aakkanum nu naane yosikka aarambichen. Prayers-ah innum sincere-ah eduthukka, konjam patience-ah irukka, namma future-ah poruppoda yosikka — idhellam konjam konjama enakkulla vandhuchu. Nee enna maatha try pannala, Sana. Nee nee-ah irundhadhe enna better person-ah maara inspire panniduchu. ❤️"
+  },
+  {
+    title: "A memory I never want to forget",
+    sub: "letter 03",
+    body: "July 21, Kannadavar Park. Namma first meet. Andha naala photos-la mattum illa, en manasulayum appadiye save panni vechirukken. Photos-ah evlo thadava paathaalum, andha naaloda feeling-ah thirumbi feel panradhu thani sandhosham. Unna first time nerla paatha moment, namma pesina neram, andha afternoon-oda chinna chinna details — ellame enakku special. 2026-la enakku romba precious-ah irukkura memories-la idhu kandippa onnu. Oru naal indha memory-ah thirumbi paathu, 'namma first meet appadi dhaan irundhuchu' nu serndhu sirikkanum. 🥹🤍"
+  },
+  {
+    title: "Why I call you Sana",
+    sub: "letter 04",
+    body: "Sahanaz nu un full name sollumbodhu oru azhagu irukku. Aana 'Sana' nu koopidumbodhu, adhu enakku romba personal-ah feel aagum. Unakku naan vechirukkura oru chinna nickname maadhiri mattum illa; unna konjam extra-ah paasathoda koopidura oru vazhi. Sila perukku names just names dhaan. Aana enakku 'Sana' na nee, un smile, un voice, namma chinna chinna memories ellame serndha oru feeling. Adhu oru name mattum illa, en heart-la unakkunu irukkura oru special address. 🩷"
+  },
+  {
+    title: "Why you are my forever",
+    sub: "letter 05",
+    body: "Forever nu sollradhu easy, Sana. Aana andha vaarthaikku artham kudukkuradhu daily namma orutharukku oruthar kaattura care, patience, understanding dhaan. Flowers vaadidum, gifts oru naal pazhasaa aagidum, aana sincere-ah kaattura love-um respect-um romba azhagaana memories-ah maarum. Nee happy-ah irukkura naal mattum illa, unakku kashtamaana naal-layum un pakkathula ninnu support pannanum nu aasai. Un kooda irukkumbodhu enakku oru veetla irukkura comfort feel aagudhu. Andha feeling-ah naan romba precious-ah paakkuren. In Sha Allah, namma bond ippadiye azhagaaga valaranum. 🤍🌙"
+  },
+  {
+    title: "What I pray for you",
+    sub: "letter 06",
+    body: "Unakkaaga naan Allah-kitta kekkura duas-la, nee eppovume happy-ah irukkanum nu mattum illa, un manasukku amaidhi kidaikkanum, un imaan strong-ah irukkanum, un vazhila barakah irukkanum, un kashtangal ease-ah maara vendum nu kooda keppean. Nee yaarunu marandhudaama, un values-ah vittukodukkaama, indha ulagathula un sincere heart-oda vaazhanum. Unakku nalladhu edhuvo, adha Allah unakku azhagaana nerathula tharanum. Un dreams niraiveranum, un duas accept aaganum, unakku theriyadha nalla vazhigal kooda unakkaaga thirakkanum. Ameen, ya Rabb. 🤲🏻💛"
+  },
+  {
+    title: "What I hope Allah gives us",
+    sub: "letter 07",
+    body: "Qur'an 30:21-la varra Mawaddah and Rahmah — love-um mercy-um — namma bond-layum irukkanum nu naan manasaara dua panren. Love irukkuradhu mattum podhaadhu, thangam; orutharoda feelings-ah innoruthar purinjukkanum, thappu nadandhaa mannippu kekkanum, kashtam vandhaa porumaiya support pannanum. Sandhoshamaana naatkal-la serndhu sirikkanum, difficult days-la orutharukku oruthar amaidhiyaa irukkanum. Allah namakku nalla puridhalaiyum, sincere love-aiyum, mercy-aiyum thandhu, namma bond-ah barakah-oda valarkkanum. In Sha Allah, namma future Allah-kku pidicha vazhila azhagaaga amaiyanum. 🤍🤲🏻"
+  },
+  {
+    title: "For your difficult days",
+    sub: "letter 08 · sealed special",
+    special: true,
+    body: "Kashtamaana naala, thangam? Seri, mudhalla medhuva moochu vidu. Konjam thanni kudi. Mudinja dhikr pannu. Apram, pesa thonuchuna enakku call pannu. Ellathayum ore nerathula solve pannanum nu avasiyam illa. Konjam rest edu; oru step-ah eduthu vai. Unnaala mudiyala nu thonra naal-layum, nee evlo try pannirukka nu marandhudaadha. Nee romba precious, Sana — Allah-kitta dua pannumbodhu unakkaaga nalla vishayangalaiyum naan ketkiren. Un kashtangalai naan ellam sari panna mudiyum nu solla maaten, aana mudinja alavukku un kooda irundhu, un pecha ketu, unna support panna aasai. Nee thaniya ellathayum thaanganum nu illa. 🤍Special envelope-ah kandupidichitta! ✨ Unakku oru bonus hug reserved. Ippo inga irundhu oru tight virtual hug 🫂 — SABR"
+  }
+];
+/* ————— 🌌 DREAMS + FUTURE TIMELINE ————— */
+const DREAMS = [
+  { title:"First Umrah, together", tag:"one day, inshaAllah" },
+  { title:"First Ramadan together", tag:"lanterns & iftar" },
+  { title:"First Eid", tag:"moon sighting & joy" },
+  { title:"Our first home", tag:"two cups, one kitchen" },
+  { title:"Ordinary mornings", tag:"rain, chai, no rush" },
+  { title:"Places we haven't seen", tag:"the map is waiting" }
+];
+const FUTURE_CHIPS = ["One day…", "First Umrah", "First Ramadan", "First Eid", "Our first home", "Ordinary mornings", "Places we haven't seen yet", "…and many more, in Sha Allah"];
+
+/* ————— 🕯 TWENTY DUAS (preserved from before, verified sources) ————— */
+const DUAS = [
+  { t:"For your dunya and your akhirah", ar:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+    en:"Our Lord, give us good in this world and good in the Hereafter, and shield us from the punishment of the Fire.",
+    src:"from the Qur'an · 2:201", note:"the most complete dua there is — so it's the first one I make for you." },
+  { t:"For us, and the family we dream of", ar:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+    en:"Our Lord, grant us from our spouses and offspring the coolness of our eyes, and make us leaders of the God-conscious.",
+    src:"from the Qur'an · 25:74", note:"my favourite one — idha naan romba naal-la irundhe sollikittu irukkken, thangam." },
+  { t:"For your knowledge to keep growing", ar:"رَّبِّ زِدْنِي عِلْمًا",
+    en:"My Lord, increase me in knowledge.", src:"from the Qur'an · 20:114", note:"shortest dua on this page, biggest meaning." },
+  { t:"For ease in everything you touch", ar:"رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي",
+    en:"My Lord, expand my chest for me and make my task easy for me.", src:"from the Qur'an · 20:25-26", note:"Musa's (AS) dua before his hardest day — for your hard days." },
+  { t:"For sabr on the heavy days", ar:"رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا",
+    en:"Our Lord, pour patience over us and keep our feet firm.", src:"from the Qur'an · 2:250", note:"on the days you feel wobbly — I'll be the feet beside yours." },
+  { t:"For the stormy nights", ar:"لَّا إِلَهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+    en:"There is no god but You; glory be to You. Indeed, I have been among the wrongdoers.", src:"from the Qur'an · 21:87", note:"the dua inside the whale brought Yunus (AS) out. It will carry you too." },
+  { t:"For a heart that never gets lost", ar:"رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً",
+    en:"Our Lord, do not let our hearts deviate after You have guided us, and grant us mercy from Yourself.", src:"from the Qur'an · 3:8", note:"keep my heart steady — on His path, and beside you." },
+  { t:"Against every worry and sadness", ar:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ",
+    en:"O Allah, I seek refuge in You from anxiety and grief, from inability and laziness.", src:"Sahih al-Bukhari", note:"sadness has no rent agreement in your heart this year. evicted, inshaAllah." },
+  { t:"For well-being, always", ar:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
+    en:"O Allah, I ask You for pardon and well-being in this world and in the Hereafter.", src:"Sunan Ibn Majah", note:"the one the Prophet ﷺ told us never to skip — so naan unnakkaga skip pannave maaten." },
+  { t:"For a tongue busy with dhikr", ar:"اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+    en:"O Allah, help me to remember You, to thank You, and to worship You beautifully.", src:"Sunan Abi Dawud", note:"may your twenty-first year taste like His remembrance." },
+  { t:"For His love, above all", ar:"اللَّهُمَّ إِنِّي أَسْأَلُكَ حُبَّكَ وَحُبَّ مَنْ يُحِبُّكَ",
+    en:"O Allah, I ask You for Your love and the love of those who love You.", src:"Jami' at-Tirmidhi", note:"He loves you — I just followed His example." },
+  { t:"The master of all istighfar", ar:"اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ",
+    en:"O Allah, You are my Lord; there is no god but You.", src:"Sahih al-Bukhari · opening of Sayyid al-Istighfar", note:"start your mornings of year twenty with this, thangam." },
+  { t:"For your parents, who raised a queen", ar:"رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+    en:"My Lord, forgive me, my parents, and all the believers on the Day the account is established.", src:"from the Qur'an · 14:41", note:"unga amma appa dhaan en favourite person-ah valarthanga. Ithu en minimum thanks." },
+  { t:"That He accepts us both", ar:"رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ",
+    en:"Our Lord, accept this from us; indeed, You are the All-Hearing, the All-Knowing.", src:"from the Qur'an · 2:127", note:"accept our effort, our patience, and our waiting." },
+  { t:"When things feel too big", ar:"حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+    en:"Allah is enough for us, and He is the Best Disposer of affairs.", src:"from the Qur'an · 3:173", note:"six words. Carry them like armour." },
+  { t:"For shukr that never runs out", ar:"رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ",
+    en:"My Lord, inspire me to be grateful for Your blessings upon me and upon my parents.", src:"from the Qur'an · 46:15", note:"gratitude for every ni'mah — including the one reading this right now. 😌" },
+  { t:"For rizq that is pure", ar:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",
+    en:"O Allah, I ask You for beneficial knowledge, pure provision, and accepted deeds.", src:"Sunan Ibn Majah", note:"knowledge that benefits, rizq that's clean, deeds that fly." },
+  { t:"For mercy written into your plans", ar:"رَبَّنَا هَبْ لَنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",
+    en:"Our Lord, grant us mercy from Yourself and make our affairs turn out right.", src:"from the Qur'an · 18:10", note:"the dua of the cave's people. May your plans land softly this year." },
+  { t:"To be counted among the guided", ar:"اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ وَعَافِنِي فِيمَنْ عَافَيْتَ",
+    en:"O Allah, guide me among those You have guided, and grant me well-being among those You have granted well-being.", src:"Jami' at-Tirmidhi · from Qunut", note:"guided among the guided — my favourite address for you." },
+  { t:"Because He makes hard things easy", ar:"اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلًا",
+    en:"O Allah, nothing is easy except what You make easy; and You can make even sorrow easy if You will.", src:"Sahih Ibn Hibban", note:"twenty, twenty-one, eighty — unakku ellame easy aagattum. Sollunga, Ameen." }
+];
+
+/* ═══════════════════════════════════════════════════════════════════
+   machinery below — no need to edit
+   ═══════════════════════════════════════════════════════════════════ */
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (REDUCED) document.documentElement.classList.add('reduced');
+const $ = s => document.querySelector(s);
+const delay = ms => new Promise(r => setTimeout(r, ms / (REDUCED ? 60 : 1)));
+
+/* tiny synth sfx (no assets needed) */
+let AC = null;
+function sfx(kind){
+  if (REDUCED) return;
+  try{
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+    const t = AC.currentTime, g = AC.createGain();
+    g.gain.setValueAtTime(.0001, t); g.connect(AC.destination);
+    if (kind === 'page'){
+      const o = AC.createOscillator(), n = AC.createBiquadFilter();
+      o.type = 'sine'; o.frequency.setValueAtTime(340, t); o.frequency.exponentialRampToValueAtTime(90, t + .18);
+      n.type = 'lowpass'; n.frequency.value = 900;
+      g.gain.linearRampToValueAtTime(.07, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + .22);
+      o.connect(n); n.connect(g); o.start(t); o.stop(t + .25);
+    } else {
+      const o = AC.createOscillator();
+      o.type = 'sine'; o.frequency.setValueAtTime(kind === 'jar' ? 620 : 480, t);
+      o.frequency.setValueAtTime(kind === 'jar' ? 830 : 640, t + .09);
+      g.gain.linearRampToValueAtTime(.06, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + .4);
+      o.connect(g); o.start(t); o.stop(t + .45);
+    }
+  }catch(e){}
+}
+function toast(msg, ms = 3200){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), ms);
+}
+
+/* scroll progress */
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  $('#progress').style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+}, { passive:true });
+
+/* ───────── stars ───────── */
+const sky = $('#sky'), ctx = sky.getContext('2d');
+let stars = [], shooter = null, nextShot = Date.now() + 4000;
+function sizeSky(){
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const W = innerWidth, H = innerHeight;
+  sky.width = W * dpr; sky.height = H * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  stars = Array.from({length: Math.min(150, W*H/10000)}, () => ({
+    x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.3+.3,
+    p: Math.random()*Math.PI*2, s: .5+Math.random()*1.2,
+    c: Math.random() < .2 ? '240,214,154' : '236,238,250' }));
+}
+addEventListener('resize', sizeSky); sizeSky();
+(function tickSky(t){
+  if (!document.hidden){
+    const W = innerWidth, H = innerHeight;
+    ctx.clearRect(0,0,W,H);
+    for (const s of stars){
+      const a = REDUCED ? .7 : .25 + .75 * Math.abs(Math.sin(t/1000*s.s + s.p));
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7);
+      ctx.fillStyle = `rgba(${s.c},${a})`; ctx.fill();
+    }
+    if (!REDUCED){
+      const now = Date.now();
+      if (!shooter && now > nextShot) shooter = { x: W*(.5+Math.random()*.45), y: H*Math.random()*.3, i: 0 };
+      if (shooter){
+        shooter.i++;
+        for (let k=0;k<5;k++){
+          const px = shooter.x-(shooter.i-k)*14, py = shooter.y+(shooter.i-k)*7;
+          ctx.beginPath(); ctx.arc(px,py,Math.max(.6,3-k*.6),0,7);
+          ctx.fillStyle = `rgba(255,255,255,${(1-k/5)*.9})`; ctx.fill();
+        }
+        if (shooter.i > 22){ shooter = null; nextShot = now + 5000 + Math.random()*8000; }
+      }
+    }
+  }
+  requestAnimationFrame(tickSky);
+})(0);
+
+/* ───────── intro sequence ───────── */
+(async function intro(){
+  const alive = () => !!document.getElementById('intro');
+  const show = id => { const el = $(id); if (el) el.classList.add('show'); };
+  const hide = id => { const el = $(id); if (el) el.classList.remove('show'); };
+  if (REDUCED){
+    document.querySelectorAll('#intro .line, #intro .stack').forEach(e => e.classList.add('show'));
+  } else {
+    show('#inL1'); await delay(1700); if (!alive()) return;
+    hide('#inL1'); await delay(700); if (!alive()) return;
+    show('#inL2'); await delay(2400); if (!alive()) return;
+    hide('#inL2'); await delay(700); if (!alive()) return;
+    document.querySelectorAll('#intro .l3, #intro .l4').forEach(e => e.classList.add('show'));
+    show('#inStack'); await delay(600);
+  }
+})();
+$('#openBtn').addEventListener('click', () => {
+  $('#intro').classList.add('done');
+  document.body.classList.remove('locked');
+  sfx('open');
+  setTimeout(() => $('#intro').remove(), 1300);
+});
+
+/* typed rotator */
+const typedEl = $('#typed');
+let li = 0, ci = 0, del = false;
+(function type(){
+  const line = CONFIG.typedLines[li];
+  typedEl.textContent = line.slice(0, ci);
+  if (!del && ci === line.length){ del = true; return setTimeout(type, 2100); }
+  if (del && ci === 0){ del = false; li = (li+1) % CONFIG.typedLines.length; return setTimeout(type, 450); }
+  ci += del ? -1 : 1;
+  setTimeout(type, (del ? 30 : 62) / (REDUCED ? 4 : 1));
+})();
+
+/* reveal observer */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* counter */
+const start = new Date(CONFIG.START).getTime();
+const pad = n => String(n).padStart(2,'0');
+(function count(){
+  const d = Math.max(0, Date.now() - start);
+  $('#cd').textContent = Math.floor(d/864e5);
+  $('#ch').textContent = pad(Math.floor(d/36e5)%24);
+  $('#cm').textContent = pad(Math.floor(d/6e4)%60);
+  $('#cs').textContent = pad(Math.floor(d/1e3)%60);
+  setTimeout(count, 1000);
+})();
+
+/* birthday line */
+(function(){
+  const now = new Date(); now.setHours(0,0,0,0);
+  const bd = new Date(CONFIG.BDAY); bd.setHours(0,0,0,0);
+  const diff = Math.round((bd - now)/864e5);
+  $('#bdayLine').textContent =
+    diff > 1  ? `✦ ${diff} days until the world completes twenty years of you ✦` :
+    diff === 1 ? '✦ tomorrow, the world completes twenty years of you ✦' :
+    diff === 0 ? '✦ today · Alhamdulillah — twenty years of you ✦' :
+                 '✦ twenty years of you · Alhamdulillah, always ✦';
+})();
+
+/* ───────── STORY BOOK ───────── */
+const book = $('#book'), bookWrap = $('#bookWrap');
+function pageHTML(p, side){
+  if (p.t === 'cover') return `
+    <div class="bcover"><div class="frame-gold"></div>
+      <svg class="star8" viewBox="0 0 40 40" style="width:20px;height:20px"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+      <h3>our kutty kadha</h3>
+      <div class="hand">unakaga mattumeyyyy — ur's sabr</div>
+      <div style="font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;opacity:.75">21 july → forever</div>
+    </div>`;
+  if (p.t === 'backcover') return `
+    <div class="bcover"><div class="frame-gold"></div>
+      <div class="hand" style="font-size:1.4rem">to be continued…</div>
+      <div style="font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft)">in sha Allah</div>
+      <svg class="book-heart" id="bookHeart" viewBox="0 0 32 32" aria-label="hidden heart — tap it">
+        <path d="M16 28 C6 20 2 14 4 8.5 C6 4 12 4 16 9 C20 4 26 4 28 8.5 C30 14 26 20 16 28Z" fill="#d99aa4"/></svg>
+    </div>`;
+  if (p.t === 'dedication') return `<div class="p-in"><div class="p-num">i</div>
+    <div class="p-ch">qalbiiiikkkuuuuuuu</div><div class="p-rule"></div>
+    <div class="hand" style="font-size:1.5rem;line-height:1.45;color:#7a2438">${p.html}</div></div>`;
+  if (p.t === 'note') return `<div class="p-in"><div class="p-num">✧</div>
+    <div class="hand" style="font-size:1.42rem;line-height:1.5;color:#5d4a3d">${p.html}</div></div>`;
+  if (p.t === 'quote') return `<div class="p-in"><div class="p-num">✧</div>
+    <svg class="star8" viewBox="0 0 40 40" style="width:16px;height:16px;fill:#c8a35e"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+    <div class="hand" style="font-size:1.36rem;line-height:1.5;color:#7a2438">${p.html}</div></div>`;
+  if (p.t === 'photo') return `<div class="p-in p-photo"><img src="${p.src}" alt="${p.alt}" loading="lazy"><figcaption>${p.cap}</figcaption></div>`;
+  if (p.t === 'collage') return `<div class="p-in" style="justify-content:center;gap:2.5%">
+    <div class="p-num" style="position:absolute">✧</div>${p.items.map((it,i)=>`
+    <figure style="width:46%;background:#fdfaf0;padding:5% 5% 8%;box-shadow:0 8px 22px rgba(60,38,18,.25);
+      transform:rotate(${[-4,3,-2][i]}deg);margin:1%">
+      <img src="${it.src}" alt="${it.cap}" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover">
+      <figcaption class="hand" style="font-size:.95rem;color:#57402c;margin-top:4%">${it.cap}</figcaption>
+    </figure>`).join('')}</div>`;
+  /* chapter */
+  return `<div class="p-in ${p.july ? 'p-july' : ''}"><div class="p-num">${p.ch}</div>
+    <div class="p-kicker">${p.ch}</div>
+    <div class="p-title">${p.title}</div><div class="p-rule"></div>
+    <div class="p-text">${p.text}</div>
+    ${p.july ? '<svg class="star8" viewBox="0 0 40 40" style="width:14px;height:14px;fill:#7a2438"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>' : ''}</div>`;
+}
+const LEAVES = [];
+for (let i = 0; i < BOOK_PAGES.length; i += 2) LEAVES.push([BOOK_PAGES[i], BOOK_PAGES[i+1]]);
+if (LEAVES[LEAVES.length-1].length === 1) LEAVES[LEAVES.length-1].push({t:'note', html:'…'});
+LEAVES.forEach((pair, i) => {
+  const leaf = document.createElement('div');
+  leaf.className = 'leaf';
+  leaf.innerHTML = `<div class="page front">${pageHTML(pair[0], 'front')}</div>` +
+    (pair[1] ? `<div class="page back">${pageHTML(pair[1], 'back')}</div>` : '');
+  book.appendChild(leaf);
+});
+const leaves = [...book.children];
+let cur = 0;
+const N = leaves.length;
+function setZ(){
+  leaves.forEach((l, i) => { l.style.zIndex = i < cur ? (i + 1) : (N - i + 1); });
+}
+const isSingle = () => matchMedia('(max-width:680px)').matches;
+function updateBook(){
+  leaves.forEach((l, i) => l.classList.toggle('flipped', i < cur));
+  setZ();
+  book.style.transform = isSingle() ? 'none' :
+    cur === 0 ? 'translateX(-25%)' : cur === N ? 'translateX(25%)' : 'translateX(0)';
+  $('#bookPage').textContent = cur === 0 ? 'cover' : cur === N ? 'the end · for now' : `page ${cur * 2 - 1} – ${Math.min(cur * 2, BOOK_PAGES.length)}`;
+  $('#bPrev').disabled = cur === 0; $('#bNext').disabled = cur === N;
+  if (cur === N) toast('…continues in real life, in sha Allah 🤍', 2600);
+}
+function flip(dir){
+  const nxt = Math.min(N, Math.max(0, cur + dir));
+  if (nxt === cur) return;
+  cur = nxt; sfx('page'); updateBook();
+}
+$('#bNext').addEventListener('click', () => flip(1));
+$('#bPrev').addEventListener('click', () => flip(-1));
+let bx = null;
+bookWrap.addEventListener('pointerdown', e => { bx = e.clientX; });
+bookWrap.addEventListener('pointerup', e => {
+  if (bx === null) return;
+  const dx = e.clientX - bx; bx = null;
+  if (Math.abs(dx) > 42) flip(dx < 0 ? 1 : -1);
+});
+addEventListener('keydown', e => {
+  const lbOpen = lightbox && lightbox.classList.contains('show');
+  if (e.key === 'ArrowRight'){ if (lbOpen) openLB(lbi + 1); else flip(1); }
+  if (e.key === 'ArrowLeft'){ if (lbOpen) openLB(lbi - 1); else flip(-1); }
+  if (e.key === 'Escape') closeAll();
+});
+setZ(); updateBook();
+
+/* hidden heart inside book (easter egg) */
+book.addEventListener('click', e => {
+  if (e.target.closest && e.target.closest('#bookHeart')){
+    e.stopPropagation(); sfx('open');
+    toast('you found my heart — ithu July 21 la irundhe unakke thaan 🤍');
+  }
+});
+
+/* ───────── GALLERY ───────── */
+const film = $('#film');
+PHOTOS.forEach((p, i) => {
+  const f = document.createElement('figure');
+  f.className = 'pola'; f.style.setProperty('--tilt', [-2.4, 1.6, -1.2, 2.6, -2, 1.2, -1.6, 2.2][i % 8] + 'deg');
+  f.setAttribute('tabindex', '0'); f.setAttribute('role', 'img'); f.setAttribute('aria-label', p.cap);
+  f.innerHTML = p.egg
+    ? `<div class="pola-inner">
+         <div class="pola-face"><img src="${p.src}" alt="${p.alt}" loading="lazy">
+           <span class="flip-hint" title="double tap to flip">✧</span>
+           <figcaption>${p.cap}</figcaption></div>
+       </div>`
+    : `<div class="pola-face"><img src="${p.src}" alt="${p.alt}" loading="lazy"><figcaption>${p.cap}</figcaption></div>`;
+  f.addEventListener('click', () => openLB(i));
+  f.addEventListener('keydown', e => { if (e.key === 'Enter') openLB(i); });
+  f.addEventListener('dblclick', () => {
+    if (p.egg){
+      f.classList.add('turned'); sfx('page');
+      setTimeout(() => toast(p.egg, 4200), 380);
+      setTimeout(() => f.classList.remove('turned'), 5200);
+    }
+  });
+  film.appendChild(f);
+});
+/* polaroid backside content for egg */
+document.querySelectorAll('.pola-inner .pola-face').forEach(face => {
+  const back = document.createElement('div');
+  back.className = 'pola-backside';
+  back.innerHTML = `<small>✦ secret ✦</small><p>double-tap win! 🤍<br>antho message toast-la pora...</p>`;
+  face.after(back);
+});
+const lightbox = $('#lightbox');
+let lbi = 0;
+function openLB(i){
+  lbi = (i + PHOTOS.length) % PHOTOS.length;
+  $('#lbImg').src = PHOTOS[lbi].src; $('#lbImg').alt = PHOTOS[lbi].alt;
+  $('#lbCap').textContent = PHOTOS[lbi].cap;
+  lightbox.classList.add('show'); sfx('open');
+}
+$('.lb-close').addEventListener('click', () => lightbox.classList.remove('show'));
+$('.lb-prev').addEventListener('click', e => { e.stopPropagation(); openLB(lbi - 1); });
+$('.lb-next').addEventListener('click', e => { e.stopPropagation(); openLB(lbi + 1); });
+lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('show'); });
+
+/* ───────── WORDS ───────── */
+const wg = $('#wordsGrid');
+WORDS.forEach(w => {
+  const c = document.createElement('div');
+  c.className = 'flip-card'; c.setAttribute('tabindex','0'); c.setAttribute('role','button');
+  c.setAttribute('aria-label', w.t + ' — tap to flip');
+  const small = /^(habun u|lubb u sm|my forever)$/.test(w.n);
+  c.innerHTML = `<div class="flip-inner">
+    <div class="word-face">
+      <div class="native ${small ? '' : 'ar'}" style="${small ? 'font-family:var(--hand); font-size:1.9rem' : ''}">${w.n}</div>
+      <h3>${w.t}</h3><div class="tag">${w.tag}</div><span class="tap">tap to flip</span>
+    </div>
+    <div class="word-face backf"><p>“${w.f}”</p><span class="tap">tap to flip back</span></div>
+  </div>`;
+  c.addEventListener('click', () => { c.classList.toggle('flip'); sfx('page'); });
+  c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.classList.toggle('flip'); } });
+  wg.appendChild(c);
+});
+
+/* ───────── SONGS ───────── */
+const songList = $('#songList');
+let audio = null, audioTrack = null;
+SONGS.forEach((s, i) => {
+  const bars = Array.from({length: 34}, (_, k) => {
+    const h = 22 + 70 * Math.abs(Math.sin(i * 9.7 + k * 1.4));
+    return `<i style="--h:${h.toFixed(0)};--d:${(k * 37 % 900)}"></i>`;
+  }).join('');
+  const t = document.createElement('div');
+  t.className = 'track' + (s.fav ? ' fav' : '');
+  t.innerHTML = `
+    ${s.fav ? '<span class="t-fav-tag">✦ our song ✦</span>' : ''}
+    <button class="t-play" aria-label="play ${s.title}"><svg viewBox="0 0 24 24"><path class="ic" d="M7 4.5v15l13-7.5z"/></svg></button>
+    <div class="t-main">
+      <div class="t-head">
+        <span class="t-num">${s.num}</span>
+        <span class="t-title">${s.title}</span>
+        ${s.tamil ? `<span class="t-tamil" lang="ta">${s.tamil}</span>` : ''}
+        ${s.movie ? `<span class="t-badge fav-badge">${s.movie}</span>` : ''}
+        <span class="t-badge">sung by sana</span>
+      </div>
+      <div class="t-note">${s.note}</div>
+      <div class="wave" aria-hidden="true">${bars}</div>
+      <div class="t-time"><span class="t-cur">0:00</span><span class="t-dur">–:––</span></div>
+    </div>
+    <audio src="${s.src}" preload="metadata"></audio>
+    <div class="t-bar"><i></i></div>`;
+  const a = t.querySelector('audio'), btn = t.querySelector('.t-play'), ic = t.querySelector('.ic');
+  a.addEventListener('loadedmetadata', () => {
+    const d = a.duration;
+    if (isFinite(d)) t.querySelector('.t-dur').textContent = `${Math.floor(d/60)}:${String(Math.floor(d%60)).padStart(2,'0')}`;
+  });
+  a.addEventListener('timeupdate', () => {
+    const d = a.duration || 0, c = a.currentTime;
+    t.querySelector('.t-cur').textContent = `${Math.floor(c/60)}:${String(Math.floor(c%60)).padStart(2,'0')}`;
+    t.querySelector('.t-bar i').style.width = (d ? (c/d*100) : 0) + '%';
+  });
+  a.addEventListener('ended', () => { t.classList.remove('playing'); ic.setAttribute('d','M7 4.5v15l13-7.5z'); });
+  btn.addEventListener('click', () => {
+    if (audio && audio !== a){ audio.pause(); audioTrack.classList.remove('playing'); audioTrack.querySelector('.ic').setAttribute('d','M7 4.5v15l13-7.5z'); audioTrack.querySelector('.t-bar i').style.width='0%'; }
+    if (a.paused){
+      a.play().catch(() => toast('audio play aagalaye — file path check pannunga 🙂'));
+      t.classList.add('playing'); ic.setAttribute('d','M6 5h4v14H6zM14 5h4v14h-4z');
+      audio = a; audioTrack = t;
+    } else {
+      a.pause(); t.classList.remove('playing'); ic.setAttribute('d','M7 4.5v15l13-7.5z');
+      audio = null; audioTrack = null;
+    }
+  });
+  songList.appendChild(t);
+});
+
+/* ───────── DUA JAR ───────── */
+const jar3d = $('#jar3d'), jarStage = $('#jarStage'), feels = $('#feels'), pickRow = $('#pickRow');
+const PANELS = 16, RAD = 140;
+for (let i = 0; i < PANELS; i++){
+  const p = document.createElement('div');
+  p.className = 'glass-panel';
+  p.style.transform = `rotateY(${i * (360/PANELS)}deg) translateZ(${RAD}px)`;
+  jar3d.appendChild(p);
+}
+const rim = document.createElement('div'); rim.className = 'jar-rim'; jar3d.appendChild(rim);
+const basep = document.createElement('div'); basep.className = 'jar-base'; jar3d.appendChild(basep);
+/* paper notes floating inside — one per emotion + a golden secret */
+let ni = 0;
+JAR.forEach((e, k) => {
+  for (let j = 0; j < 2; j++){
+    const n = document.createElement('div');
+    n.className = 'knote';
+    n.style.background = `linear-gradient(150deg, ${e.color}, ${e.color}cc)`;
+    n.style.transform = `rotateY(${(ni * 47) % 360}deg) translateZ(${30 + (ni * 23) % 80}px) translateY(${-40 + (ni * 31) % 150}px) rotate(${(ni * 13) % 40 - 20}deg)`;
+    n.innerHTML = '<div class="bib" style="animation-delay:' + (ni * -0.4) + 's"></div>';
+    jar3d.appendChild(n); ni++;
+  }
+});
+const goldn = document.createElement('div');
+goldn.className = 'knote';
+goldn.style.cssText = 'background:linear-gradient(150deg,#f6df9f,#c79a35);box-shadow:0 0 18px rgba(240,214,154,.75);width:30px;height:38px;border-radius:5px;transform:rotateY(200deg) translateZ(60px) translateY(60px) rotate(12deg)';
+goldn.innerHTML = '<div class="bib"></div>';
+jar3d.appendChild(goldn);
+const lid = document.createElement('div');
+lid.className = 'lid3d';
+lid.innerHTML = '<div class="lid-top"></div><button class="lid-knob" aria-label="open the jar lid"></button>';
+jar3d.appendChild(lid);
+/* rotation */
+let angle = 0, vel = 0, dragging = false, lastX = 0, moved = 0, opened = false;
+function drawJar(){ jar3d.style.transform = `rotateY(${angle}deg)`; }
+drawJar();
+jarStage.addEventListener('pointerdown', e => { dragging = true; moved = 0; lastX = e.clientX; vel = 0; });
+addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
+  angle += dx * .35; vel = dx * .35; drawJar();
+});
+addEventListener('pointerup', () => { dragging = false; });
+(function inertia(){
+  if (!dragging && Math.abs(vel) > .02 && !REDUCED){ angle += vel; vel *= .955; drawJar(); }
+  requestAnimationFrame(inertia);
+})();
+/* open lid */
+function openJar(){
+  if (moved > 8) return;                       // it was a drag, not a tap
+  if (opened) return;
+  opened = true;
+  jar3d.classList.add('open'); sfx('jar');
+  $('#jarHint').textContent = 'notes unlocked ✦ choose your feeling';
+  buildFeels();
+  setTimeout(() => feels.classList.add('show'), 700);
+}
+jarStage.addEventListener('click', openJar);
+lid.querySelector('.lid-knob').addEventListener('click', e => { e.stopPropagation(); moved = 0; openJar(); });
+jarStage.addEventListener('keydown', e => { if (e.key === 'Enter') openJar(); });
+jarStage.setAttribute('tabindex','0');
+function buildFeels(){
+  JAR.forEach((e, i) => {
+    const chip = document.createElement('button');
+    chip.className = 'feel-chip';
+    chip.textContent = `${e.emoji} ${e.label}`;
+    chip.setAttribute('aria-label', 'open notes for ' + e.label);
+    chip.addEventListener('click', () => pickEmotion(i));
+    feels.appendChild(chip);
+  });
+  const s = document.createElement('button');
+  s.className = 'feel-chip secret show' + '';
+  s.textContent = '✨ something hidden';
+  s.addEventListener('click', () => { openNote(null, JAR_SECRET); });
+  feels.appendChild(s);
+}
+function pickEmotion(i){
+  const e = JAR[i]; sfx('page');
+  pickRow.innerHTML = '';
+  e.notes.forEach((n, k) => {
+    const c = document.createElement('button');
+    c.className = 'pick';
+    c.style.background = `linear-gradient(160deg, ${e.color}, ${e.color}d8)`;
+    c.style.setProperty('--tilt', (k % 2 ? 1.8 : -2) + 'deg');
+    c.innerHTML = `<div style="font-size:1.5rem">${e.emoji}</div><div>note ${k + 1} of ${e.notes.length}<br><span style="font-size:.8em;opacity:.75">open me</span></div>`;
+    c.addEventListener('click', () => openNote(e, n));
+    pickRow.appendChild(c);
+  });
+  pickRow.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'center' });
+}
+const unfold = $('#unfold'), paperBody = $('#paperBody');
+const openedNotes = new Set(); let jarBonus = false;
+function openNote(e, n){
+  paperBody.innerHTML =
+    (n.ar ? `<span class="ar" lang="ar">${n.ar}</span><p class="tr">“${n.tr}”</p><div class="ref">${n.ref}</div>` : '') +
+    (n.msg ? `<p class="msg">${n.msg}</p>` : '');
+  unfold.classList.add('show'); sfx('open');
+  if (e) openedNotes.add(e.label + '|' + String(n.ref || n.msg || '').slice(0, 24));
+  if (openedNotes.size >= 5 && !jarBonus){
+    jarBonus = true;
+    setTimeout(() => toast('5 notes back-to-back! 📜 jar-oda full summary bonus: "enga irundhalum, enna neram aanalum — naan unakku irukken." adhu dhaan andha jar solra final message. 🤍 — sabr', 8000), 900);
+  }
+}
+$('#unfoldX').addEventListener('click', () => unfold.classList.remove('show'));
+unfold.addEventListener('click', e => { if (e.target === unfold) unfold.classList.remove('show'); });
+
+/* ───────── ENVELOPES ───────── */
+const envGrid = $('#envGrid');
+LETTERS.forEach((L, i) => {
+  const e = document.createElement('div');
+  e.className = 'env' + (L.special ? ' special' : '');
+  e.setAttribute('tabindex','0'); e.setAttribute('role','button');
+  e.setAttribute('aria-label', 'open envelope: ' + L.title);
+  e.innerHTML = `
+    <div class="env-body"></div>
+    <div class="env-letterpaper"><p>${L.title}…</p></div>
+    <div class="env-flap"><div class="face"></div><div class="backface"></div></div>
+    <div class="env-front"></div>
+    <div class="env-label">${L.title}<small>${L.sub}</small></div>
+    <div class="env-seal">${L.special ? '✦' : '♥'}</div>`;
+  const open = () => {
+    const willOpen = !e.classList.contains('open');
+    e.classList.toggle('open');
+    if (willOpen){
+      sfx('open');
+      setTimeout(() => {
+        paperBody.innerHTML = `<div class="ltitle">${L.title}</div><p class="lbody">${L.body}</p>`;
+        unfold.classList.add('show');
+        e.classList.remove('open');
+      }, 820);
+    }
+  };
+  e.addEventListener('click', open);
+  e.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(); } });
+  envGrid.appendChild(e);
+});
+
+/* ───────── DUAS (preserved) ───────── */
+const grid = $('#duaGrid');
+DUAS.forEach((d, i) => {
+  const b = document.createElement('button');
+  b.className = 'dua reveal';
+  b.setAttribute('aria-expanded', 'false');
+  b.innerHTML = `
+    <div class="dua-head"><span class="dua-num">${String(i+1).padStart(2,'0')}</span><h3>${d.t}</h3><span class="plus">+</span></div>
+    <div class="dua-body"><div class="dua-inner">
+      <div class="dua-ar">${d.ar}</div>
+      <div class="dua-en">${d.en}</div>
+      <div class="dua-src">${d.src}</div>
+      <div class="dua-note">${d.note}</div>
+    </div></div>`;
+  b.addEventListener('click', () => {
+    const body = b.querySelector('.dua-body');
+    const open = b.classList.toggle('open');
+    body.style.maxHeight = open ? body.scrollHeight + 'px' : '0px';
+    b.setAttribute('aria-expanded', String(open));
+  });
+  grid.appendChild(b);
+  io.observe(b);
+});
+$('#randomDua').addEventListener('click', () => {
+  const cards = grid.children;
+  const pick = cards[Math.floor(Math.random() * cards.length)];
+  [...cards].forEach(c => {
+    if (c !== pick && c.classList.contains('open')){
+      c.classList.remove('open'); c.querySelector('.dua-body').style.maxHeight = '0px';
+    }
+  });
+  pick.scrollIntoView({ behavior:'smooth', block:'center' });
+  setTimeout(() => { if (!pick.classList.contains('open')) pick.click(); }, 450);
+});
+
+/* ───────── FUTURE ───────── */
+const dg = $('#dreamGrid');
+DREAMS.forEach(d => {
+  const f = document.createElement('figure');
+  f.className = 'dream';
+  f.innerHTML = `<img src="${d.img}" alt="${d.alt}" loading="lazy"><figcaption><span>${d.tag}</span><b>${d.title}</b></figcaption>`;
+  dg.appendChild(f);
+});
+const fl = $('#futureLine');
+FUTURE_CHIPS.forEach((c, i) => {
+  const chip = document.createElement('div');
+  chip.className = 'fchip';
+  chip.innerHTML = `<span>${i === 0 ? 'the wishlist' : 'in sha Allah'}</span><b>${c}</b>`;
+  fl.appendChild(chip);
+});
+
+/* ───────── MOON SECRET + FINAL SECRET ───────── */
+const secret = $('#secret');
+$('#moon').addEventListener('click', () => { secret.classList.add('show'); sfx('jar'); });
+$('#secretClose').addEventListener('click', () => secret.classList.remove('show'));
+secret.addEventListener('click', e => { if (e.target === secret) secret.classList.remove('show'); });
+$('#footerStar').addEventListener('click', () => { $('#lastSecret').classList.add('show'); sfx('open'); });
+
+/* ───────── MIDNIGHT NOTES ───────── */
+const mnGrid = $('#mnGrid'), mnCount = $('#mnCount');
+let mnDeck = [], mnOpened = 0;
+function mnShuffle(){
+  mnDeck = [...MISS_NOTES].sort(() => Math.random() - .5).slice(0, 8);
+  mnGrid.innerHTML = ''; mnOpened = 0;
+  mnCount.textContent = '0 / 8 moon-notes opened';
+  mnDeck.forEach((note, i) => {
+    const b = document.createElement('button');
+    b.className = 'mnote'; b.setAttribute('aria-label', 'moon note ' + (i + 1) + ' — tap to open');
+    b.innerHTML = `<span class="in">
+      <span class="face front"><span class="cres">☾</span><small>moon note · ${String(i + 1).padStart(2, '0')}</small></span>
+      <span class="face back">${note}</span></span>`;
+    let opened = false;
+    const flip = () => {
+      const willFlip = !b.classList.contains('flip');
+      b.classList.toggle('flip');
+      if (willFlip) sfx('page');
+      if (willFlip && !opened){
+        opened = true; mnOpened++;
+        mnCount.textContent = `${mnOpened} / 8 moon-notes opened`;
+        if (mnOpened === 8){
+          setTimeout(() => { spawnStars(); sfx('open'); toast(MISS_FINALE, 8000); }, 700);
+          setTimeout(() => { if (!mnGrid.querySelector('.flip')) mnShuffle(); }, 14000);
+        }
+      }
+    };
+    b.addEventListener('click', flip);
+    b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); flip(); } });
+    mnGrid.appendChild(b);
+  });
+}
+mnShuffle();
+
+/* ───────── TAHAJJUD ───────── */
+(function(){
+  const tajWrap = $('#tajWrap'); if (!tajWrap) return;
+  tajWrap.querySelectorAll('.taj-star').forEach(s => s.remove());
+  if (!REDUCED) for (let i = 0; i < 26; i++){
+    const s = document.createElement('i'); s.className = 'taj-star';
+    s.style.left = (Math.random() * 100).toFixed(1) + '%'; s.style.top = (Math.random() * 100).toFixed(1) + '%';
+    s.style.width = s.style.height = (Math.random() < .3 ? 3 : 2) + 'px';
+    s.style.animationDelay = (Math.random() * 3.6).toFixed(2) + 's';
+    tajWrap.appendChild(s);
+  }
+  $('#tajNote').textContent = TAJ.note;
+  let tajToastDone = false;
+  const fmt = (h, m) => `${((h + 11) % 12) + 1}:${String(m).padStart(2, '0')} ${h >= 12 ? 'pm' : 'am'}`;
+  function update(){
+    const [mh, mm] = TAJ.MAGHRIB.split(':').map(Number);
+    const [fh, fm] = TAJ.FAJR.split(':').map(Number);
+    const start = mh * 60 + mm, end = fh * 60 + fm + 1440;       // night window, fajr = next day
+    const lts = start + Math.round((end - start) * 2 / 3);        // last third begins
+    const lh = Math.floor(lts / 60) % 24, lm = lts % 60;
+    const now = new Date(); let cur = now.getHours() * 60 + now.getMinutes();
+    if (cur < fh * 60 + fm) cur += 1440;                          // after midnight → still "tonight"
+    if (cur >= lts && cur <= end){
+      $('#tajNow').innerHTML = '✦ <b>ippo dhaan andha neram</b> — the last third of the night.<br>un kai thooki dua pannum bodhu, kai kotta oru ameen: naan.';
+      if (!tajToastDone){ tajToastDone = true;
+        setTimeout(() => toast('tahajjud nerathla kooda inga vandhiya, thangam? 🤍 en heart full. Allah unakku ketta ellathayum kudukanum — un dua-la naan irukken nu enakku theriyum. return to sleep with a big smile. 🤍', 8500), 45000);
+      }
+    } else {
+      $('#tajNow').innerHTML = `namma area-la approx. solla ponna — tonight's last third begins around <b>${fmt(lh, lm)}</b>`;
+    }
+  }
+  update(); setInterval(update, 60000);
+})();
+
+/* ───────── secret eggs: type "sana" · tap her name 5× ───────── */
+function spawnStars(){
+  if (REDUCED) return;
+  for (let i = 0; i < 16; i++){
+    const s = document.createElement('span');
+    s.className = 'burst-star'; s.textContent = '✦';
+    s.style.left = (8 + Math.random() * 84).toFixed(1) + 'vw';
+    s.style.fontSize = (10 + Math.random() * 14).toFixed(0) + 'px';
+    s.style.animationDelay = (Math.random() * .7).toFixed(2) + 's';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 3800);
+  }
+}
+let typeBuff = '', lastKeyT = 0;
+addEventListener('keydown', e => {
+  if (!/^[a-z]$/i.test(e.key)){ typeBuff = ''; return; }
+  const nowT = Date.now();
+  typeBuff = ((nowT - lastKeyT > 1800 ? '' : typeBuff) + e.key.toLowerCase()).slice(-4);
+  lastKeyT = nowT;
+  if (typeBuff === 'sana'){
+    typeBuff = ''; spawnStars(); sfx('open');
+    toast('S-A-N-A ✦ en keyboard-la kooda un per dhaan type aagum. Miss you so much, thangam — and love you more than this whole site can hold. — sabr', 7500);
+  }
+});
+/* mobile version: tap "Sahanaz" 5 times quickly */
+(function(){
+  const heroName = document.querySelector('.hero h1'); if (!heroName) return;
+  let taps = [], lock = false;
+  heroName.addEventListener('pointerup', () => {
+    const nowT = Date.now(); taps = taps.filter(t => nowT - t < 2600); taps.push(nowT);
+    if (taps.length >= 5 && !lock){
+      lock = true; taps = [];
+      spawnStars(); sfx('open');
+      toast('en per-ah 5 times thotta — adhu oru spell maari thangam: nee \"miss you\" nu heart-la sollum bodhu, engayum olichu irukka maaten — naan ippo kooda unna dhaan miss pannitu irukken. 🤍 — sabr', 8000);
+      setTimeout(() => lock = false, 10000);
+    }
+  });
+})();
+
+function closeAll(){
+  lightbox.classList.remove('show');
+  unfold.classList.remove('show');
+  secret.classList.remove('show');
+}
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a49c8eaa8c9d9a55',t:'MTc5MTg3NTc3MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
