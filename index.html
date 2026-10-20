@@ -91,6 +91,77 @@ h2.title{text-align:center; font-family:var(--serif); font-weight:600; font-size
 #openBtn:hover{background:rgba(217,180,91,.12); box-shadow:0 0 34px rgba(217,180,91,.28); letter-spacing:.36em}
 #introHint{margin-top:18px; font-size:.62rem; letter-spacing:.3em; color:var(--dim); text-transform:uppercase}
 
+/* ════════════════════ the vault (5 keys) ════════════════════ */
+#vault{position:fixed; inset:0; z-index:200; display:grid; place-items:center; padding:18px; text-align:center; overflow-y:auto;
+  background:radial-gradient(900px 620px at 50% 22%, #241019, #0d060a); transition:opacity 1.15s ease, visibility 1.15s}
+#vault.done{opacity:0; visibility:hidden; pointer-events:none}
+.vault-in{max-width:480px; width:100%; display:flex; flex-direction:column; align-items:center; margin:auto}
+.vault-head{display:flex; flex-direction:column; align-items:center; margin-bottom:14px}
+.gate-star{width:22px; height:22px; fill:var(--gold); margin-bottom:14px; animation:gatePulse 3s ease-in-out infinite}
+@keyframes gatePulse{0%,100%{filter:drop-shadow(0 0 6px rgba(217,180,91,.35))}50%{filter:drop-shadow(0 0 20px rgba(217,180,91,.75))}}
+.gate-kicker{font-size:.62rem; letter-spacing:.42em; text-transform:uppercase; color:var(--dim)}
+.vault-keys{margin-top:12px; font-size:1.5rem; letter-spacing:.35em; color:var(--gold); text-shadow:0 0 14px rgba(217,180,91,.45); min-height:2rem}
+.vault-keys .dim{color:rgba(217,180,91,.22); text-shadow:none}
+.vault-title{font-family:var(--serif); font-weight:600; font-size:clamp(1.55rem,6vw,2.1rem); color:var(--gold-soft)}
+.vault-sub{color:var(--ink); font-family:var(--serif); font-style:italic; font-size:clamp(.95rem,3.2vw,1.08rem); line-height:1.8; margin:10px 0 0}
+.vault-msg{margin-top:16px; font-family:var(--hand); font-size:1.12rem; line-height:1.55; color:var(--rose); min-height:2.6em; max-width:400px}
+.vault-btn{cursor:pointer; margin-top:20px; border:1px solid var(--gold); color:#241a05; background:linear-gradient(160deg,var(--gold-soft),var(--gold));
+  border-radius:999px; padding:13px 34px; letter-spacing:.18em; font-size:.74rem; text-transform:uppercase; font-weight:600;
+  transition:transform .3s ease, box-shadow .3s ease, filter .3s ease}
+.vault-btn:hover{transform:translateY(-2px); box-shadow:0 8px 26px rgba(217,180,91,.32); filter:brightness(1.05)}
+.vault-btn.ghost{background:transparent; color:var(--gold); font-weight:400}
+.v-puzzle-label{font-size:.6rem; letter-spacing:.34em; text-transform:uppercase; color:var(--dim); margin-bottom:12px}
+#vault.shake .vault-stage{animation:gateShake .5s ease}
+@keyframes gateShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+.reduced #vault.shake .vault-stage,.reduced .gate-star,.reduced .vheart{animation:none}
+
+/* key 1 — memory match */
+.vmatch{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; width:100%; max-width:400px}
+.vmcard{position:relative; aspect-ratio:1; perspective:700px; cursor:pointer; border:0; background:none; padding:0; font:inherit}
+.vmcard .in{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.vmcard.on .in,.vmcard.hit .in{transform:rotateY(180deg)}
+.vmcard .face{position:absolute; inset:0; border-radius:12px; display:grid; place-items:center; backface-visibility:hidden; -webkit-backface-visibility:hidden; font-size:1.5rem}
+.vmcard .front{border:1px dashed rgba(240,214,154,.38); background:rgba(255,255,255,.03); color:var(--gold-soft); font-size:1.05rem}
+.vmcard .back{transform:rotateY(180deg); background:linear-gradient(165deg,#f6ecd9,#efe2c6); box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.vmcard.hit .back{background:linear-gradient(165deg,#e9d9ac,#e0c88a); animation:hitPulse .7s ease}
+@keyframes hitPulse{0%{box-shadow:0 0 0 rgba(217,180,91,.8)}100%{box-shadow:0 0 30px rgba(217,180,91,0)}}
+.reduced .vmcard .in{transition:none}
+
+/* key 2 — timeline order */
+.vorder{display:flex; flex-direction:column; gap:10px; width:100%; max-width:400px}
+.vocard{cursor:pointer; border:1px solid var(--line); border-radius:14px; padding:14px 16px; background:rgba(255,255,255,.03);
+  color:var(--paper); font-family:var(--serif); font-size:.98rem; line-height:1.5; transition:border-color .3s ease, background .3s ease, transform .2s ease}
+.vocard:hover{border-color:rgba(217,180,91,.5); background:rgba(217,180,91,.06)}
+.vocard.done{border-color:var(--gold-soft); background:rgba(217,180,91,.12); color:var(--gold-soft); cursor:default; transform:scale(1.01)}
+.vocard small{display:block; font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; color:var(--dim); margin-top:2px}
+.vocard.done small{color:rgba(217,180,91,.7)}
+
+/* key 3 — hidden hearts */
+.vheart-field{position:relative; width:100%; max-width:400px; height:300px; border:1px dashed rgba(240,214,154,.2); border-radius:16px; overflow:hidden;
+  background:radial-gradient(400px 220px at 50% 30%, rgba(147,48,74,.12), transparent 70%)}
+.vheart{position:absolute; cursor:pointer; border:0; background:none; padding:8px; font-size:.95rem; color:var(--rose);
+  opacity:.4; animation:tw 2.8s ease-in-out infinite alternate; transition:transform .3s ease, opacity .3s ease}
+.vheart:hover{transform:scale(1.25); opacity:.9}
+.vheart.found{opacity:1; transform:scale(1.3); color:var(--gold-soft); cursor:default; text-shadow:0 0 14px rgba(240,214,154,.8)}
+
+/* key 4 — letter tiles */
+.vtiles{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:6px}
+.vtile{cursor:pointer; width:46px; height:52px; border-radius:10px; border:1px solid rgba(217,180,91,.4);
+  background:linear-gradient(165deg,#f6ecd9,#efe2c6); color:#4b3d28; font-family:var(--serif); font-weight:600; font-size:1.35rem;
+  display:grid; place-items:center; transition:transform .2s ease, opacity .2s ease; box-shadow:0 6px 14px rgba(0,0,0,.3)}
+.vtile:hover{transform:translateY(-3px)}
+.vtile.used{opacity:.25; pointer-events:none; transform:none; box-shadow:none}
+.vbuilt{margin-top:18px; font-family:var(--serif); font-weight:600; letter-spacing:.45em; font-size:1.4rem; color:var(--gold-soft); min-height:1.8rem; padding-left:.45em}
+
+/* key 5 — final typed key (reuses gate input style) */
+.gate-q{color:var(--ink); font-family:var(--serif); font-style:italic; font-size:clamp(1rem,3.4vw,1.12rem); line-height:1.85; margin:8px 0 20px; max-width:380px}
+.gate-row{display:flex; gap:10px; width:100%; max-width:370px}
+#gateInput{flex:1; min-width:0; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:999px;
+  color:var(--paper); padding:13px 20px; font:inherit; font-size:.95rem; outline:none; text-align:center;
+  transition:border-color .3s ease, box-shadow .3s ease}
+#gateInput:focus{border-color:var(--gold); box-shadow:0 0 22px rgba(217,180,91,.18)}
+#gateInput::placeholder{color:var(--dim); opacity:.7}
+
 /* ════════════════════ hero (preserved & warmed) ════════════════════ */
 .hero{min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 20px 60px}
 .bismillah{font-family:var(--arabic); direction:rtl; font-size:clamp(1.15rem,3vw,1.5rem); color:var(--gold-soft); margin-bottom:6px}
@@ -502,9 +573,22 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
   <div class="line l2" id="inL2">for the gurl I didn't know I was going to fall in love with —</div>
   <div class="stack" id="inStack">
     <div class="line l3" id="inL3" style="position:static">Sabr × Sana</div>
-    <div class="line l4" style="position:static">✦ &nbsp;October 18&nbsp; ✦</div>
+    <div class="line l4" style="position:static">✦  October 18  ✦</div>
     <button id="openBtn" aria-label="open the gift">open this</button>
     <div id="introHint">made only for you · scroll slowly</div>
+  </div>
+</div>
+
+<!-- ════════════════ THE VAULT — earn 5 keys to open ════════════════ -->
+<div id="vault" role="dialog" aria-modal="true" aria-label="locked vault — earn five keys to open">
+  <div class="vault-in">
+    <div class="vault-head">
+      <svg class="gate-star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
+      <div class="gate-kicker">Sabr × Sana · the vault</div>
+      <div class="vault-keys" id="vKeys" aria-label="keys collected">✧ ✧ ✧ ✧ ✧</div>
+    </div>
+    <div class="vault-stage" id="vStage"></div>
+    <div class="vault-msg" id="vMsg" aria-live="polite"></div>
   </div>
 </div>
 
@@ -520,7 +604,7 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
     </svg>
     <div class="moon-hint">tap the moon ✦</div>
     <h1>Sahanas<em>(Sana- My Qalbiiii)</em></h1>
-    <div class="typed-wrap"><span id="typed"></span><span class="caret">&nbsp;</span></div>
+    <div class="typed-wrap"><span id="typed"></span><span class="caret"> </span></div>
     <div class="cue">scroll slowly · this is for you</div>
   </header>
 
@@ -531,8 +615,10 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
       <h2 class="title">Ithu oru birthday page illa.</h2>
       <div class="divider"><span class="l"></span><svg class="star8" viewBox="0 0 40 40"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg><span class="r"></span></div>
       <div class="card note-card" style="margin-top:34px">
-        <p>enaku theriyum — nee birthdays celebrate panna maata.<br>
-        Candles-ah illa, blessings-ah dhaan nee count pannuva.<br>
+        <p>enaku theriyum — nee birthdays celebrate panna maata.
+
+        Candles-ah illa, blessings-ah dhaan nee count pannuva.
+
         adhanala dhan nee ivlo special Thangameyyyyy.</p>
         <p class="small">So itha oru "birthday site"-nu nenaikkaadha. Oct 18 — twenty varusham munnaadi,
         Allah unnai ezhudhi vecha andha naalukku solra oru chinna <span class="gold">shukr</span>.
@@ -602,7 +688,8 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
     <div class="wrap reveal">
       <div class="kicker">nee paadi · naan save pannadhu</div>
       <h2 class="title">nee ஒளித்த ஒலிகள்</h2>
-      <p class="sub"><span lang="ta" style="color:var(--gold-soft)">சனாவின் குரலில் — எனக்காகப் பாடியவை</span><br>
+      <p class="sub"><span lang="ta" style="color:var(--gold-soft)">சனாவின் குரலில் — எனக்காகப் பாடியவை</span>
+
       Un voice-la paadi unakke dedicate pandren paathiya , maja vaa</p>
       <div class="songs" id="songList"></div>
       <!-- <div class="songs-note">🎵 sabr note: real MP3s ah <code>assets/audio/</code>-la same file name-la pottu replace pannunga. No autoplay — un touch-la dhaan music.</div> -->
@@ -654,7 +741,7 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
       Medhuva tap pannu, Sana. Unakkaaga manasaara ketta
       irubadhu duas unakkaaga kaathirukku. 🤍
     </p>
-    <button id="randomDua">✦ &nbsp;gift me a random dua&nbsp; ✦</button>
+    <button id="randomDua">✦  gift me a random dua  ✦</button>
     <div class="dua-grid" id="duaGrid"></div>
   </div>
 </section>
@@ -822,7 +909,7 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
 
   <footer>
     <svg class="star8" id="footerStar" viewBox="0 0 40 40" style="width:14px;height:14px" aria-label="one last secret"><path d="M20 0 L25 15 L40 20 L25 25 L20 40 L15 25 L0 20 L15 15 Z"/></svg>
-    <div class="names">Sabr 🤍 Sana &nbsp;·&nbsp; 21 July → 18 October → forever, inshaAllah</div>
+    <div class="names">Sabr 🤍 Sana  ·  21 July → 18 October → forever, inshaAllah</div>
     <div>made with duas, code &amp; oru manasu that beats only for my qalbiiii</div>
     <div id="lastSecret">nalla iruppa, thangam. un smile-ku dhaan ithu ellam. 🤍</div>
   </footer>
@@ -843,7 +930,9 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
     <h3>You found the hidden moon 🌙</h3>
     <p>Then you deserve the secret it was guarding:</p>
     <span class="ar" lang="ar">رَبِّ اجْعَلْهَا قُرَّةَ عَيْنٍ لِي فِي الدُّنْيَا وَالْآخِرَةِ</span>
-    <p style="font-size:.95rem">"Ya Allah, make her the coolness of my eyes — in this dunya and in the akhirah."<br><br>It's the dua I whisper in every sujood since July 21st. Ippo therinju pochu — secret-aa innum illa, thangam. 🤍</p>
+    <p style="font-size:.95rem">"Ya Allah, make her the coolness of my eyes — in this dunya and in the akhirah."
+
+It's the dua I whisper in every sujood since July 21st. Ippo therinju pochu — secret-aa innum illa, thangam. 🤍</p>
     <button id="secretClose">close</button>
   </div>
 </div>
@@ -856,6 +945,21 @@ footer .names{font-family:var(--serif); font-style:italic; font-size:1.05rem; co
 const CONFIG = {
   START: "2026-07-21T00:00:00+05:30",   // journey start (July 21, Kannadavar Park)
   BDAY:  "2026-10-18T00:00:00+05:30",   // her birthday
+  /* 🗝️ THE VAULT — 5 keys must be earned inside the site to unlock. enabled:false = no vault */
+  GATE: {
+    enabled: true,
+    question: "kadaisi aa Orae kelvi — answer dhaan final key: nee enna romba anba epdi koopduva. (small letters-la type pannu)",
+    answers: ["sabr", "zawji"],    // ✏️ accepted spellings — unga slang word-a inga podu (e.g. ["jauji","jausi"])
+    wrongLines: [
+      "illa thangam 😅 marupadi try pannu — enakku theriyum unakku theriyum nu!",
+      "close-ah illa 😌 oru second nenachu paaru — ithu unakku dhaan easy."
+    ],
+    hints: [
+      "hint 1: en real per illa — nee enna romba sweet-ah, play-ah SOLLURA word.",
+      "hint 2: tamil-la 'kanavan' nu artam varum. nee enna apdi dhaan koopduviye 🕌",
+      "emergency 🗝️: whatsapp-la 'key thaa' nu sollu — naan rescue panniren 😂"
+    ]
+  },
   typedLines: ["my Thangameyy ✦", "ya Qalbi", "Ya Ruhi", "Ya Hayati","lubb you so much, Sana 🤍",
                "habun u — always ✦", "my Forever", "my forever dua", "missing you, always ✦",
                "twenty years of noor — Alhamdulillah","Eid Milad Saeed - kanneyyy","Happy 20's di mineyyy"]
@@ -1105,12 +1209,12 @@ const LETTERS = [
 ];
 /* ————— 🌌 DREAMS + FUTURE TIMELINE ————— */
 const DREAMS = [
-  { title:"First Umrah, together", tag:"one day, inshaAllah" },
-  { title:"First Ramadan together", tag:"lanterns & iftar" },
-  { title:"First Eid", tag:"moon sighting & joy" },
-  { title:"Our first home", tag:"two cups, one kitchen" },
-  { title:"Ordinary mornings", tag:"rain, chai, no rush" },
-  { title:"Places we haven't seen", tag:"the map is waiting" }
+  { title:"First Umrah, together", tag:"one day, inshaAllah",  img:"assets/images/memory-10-kaaba.jpg",   alt:"the Kaaba glowing at dusk" },
+  { title:"First Ramadan together", tag:"lanterns & iftar",    img:"assets/images/memory-12-lanterns.jpg", alt:"lanterns strung over a street" },
+  { title:"First Eid", tag:"moon sighting & joy",              img:"assets/images/memory-11-mosque.jpg",   alt:"a mosque minaret under morning light" },
+  { title:"Our first home", tag:"two cups, one kitchen",       img:"assets/images/memory-07-cups.jpg",     alt:"two cups on a small table" },
+  { title:"Ordinary mornings", tag:"rain, chai, no rush",      img:"assets/images/memory-09-rain.jpg",     alt:"raindrops on a window" },
+  { title:"Places we haven't seen", tag:"the map is waiting",  img:"assets/images/memory-13-crescent-sea.jpg", alt:"a crescent moon over the sea" }
 ];
 const FUTURE_CHIPS = ["One day…", "First Umrah", "First Ramadan", "First Eid", "Our first home", "Ordinary mornings", "Places we haven't seen yet", "…and many more, in Sha Allah"];
 
@@ -1241,8 +1345,12 @@ addEventListener('resize', sizeSky); sizeSky();
   requestAnimationFrame(tickSky);
 })(0);
 
-/* ───────── intro sequence ───────── */
-(async function intro(){
+/* ───────── the final door (lock gate) — intro starts only after vault unlock ───────── */
+const doorStore = {
+  get(){ try{ return localStorage.getItem('sanaDoorOpen'); }catch(e){ return null; } },
+  set(){ try{ localStorage.setItem('sanaDoorOpen', '1'); }catch(e){} }
+};
+async function startIntro(){
   const alive = () => !!document.getElementById('intro');
   const show = id => { const el = $(id); if (el) el.classList.add('show'); };
   const hide = id => { const el = $(id); if (el) el.classList.remove('show'); };
@@ -1256,6 +1364,200 @@ addEventListener('resize', sizeSky); sizeSky();
     document.querySelectorAll('#intro .l3, #intro .l4').forEach(e => e.classList.add('show'));
     show('#inStack'); await delay(600);
   }
+}
+/* ───────── THE VAULT — 5 keys, all earned inside the site ───────── */
+(function vault(){
+  const V = $('#vault');
+  const G = CONFIG.GATE || { enabled: false };
+  if (!G.enabled || doorStore.get() === '1'){ if (V) V.remove(); startIntro(); return; }
+
+  const stage = $('#vStage'), vMsg = $('#vMsg'), vKeys = $('#vKeys');
+  const PRAISE = [
+    "key ✓ — kalakuringaleyyy, qalbiii parraahhhh 🔥",
+    "key ✓ — chumma illa… namma memories-ku skill thevai-nu therinjiruchu-la 😌",
+    "key ✓ — seekrama solve pannuve nu nenachen. two more.",
+    "key ✓ — one more. door nalla nerungi varudhu…",
+    ""
+  ];
+  let done = [];
+  try{ done = JSON.parse(localStorage.getItem('sanaVaultKeys') || '[]'); }catch(e){}
+  const save = () => { try{ localStorage.setItem('sanaVaultKeys', JSON.stringify(done)); }catch(e){} };
+  const stars = () => { vKeys.innerHTML = Array.from({ length: 5 }, (_, i) =>
+    i < done.length ? '<span>★</span>' : '<span class="dim">✧</span>').join(''); };
+  const setMsg = t => { vMsg.textContent = t; };
+  const shake = () => { V.classList.remove('shake'); void V.offsetWidth; V.classList.add('shake'); };
+  const norm = s => (s || '').toLowerCase().trim().replace(/[\s.!]+/g, '');
+
+  function renderIntro(){
+    stage.innerHTML = `<div>
+      <h2 class="vault-title">The Sabr × Sana Vault 🗝️</h2>
+      <p class="vault-sub">ulla oru surprise iruku. aana easy-ah thoraka mudiyadheeyyy, choorry.<br>
+      5 keys venum — 5 chinna tasks, ellam namma story-related dhan ✦<br>
+      <span style="opacity:.7">estimated time: konjam neraam… (ithu dhaan point 😌)</span></p>
+      <button class="vault-btn" id="vStart">start the vault</button></div>`;
+    setMsg('breathe. oru spoiler: nee kandippa win panndruvaa thangameyyy 🤍');
+    stage.querySelector('#vStart').addEventListener('click', () => { sfx('open'); renderMatch(); });
+  }
+
+  function renderMatch(){
+    setMsg('key 1 · 8 pairs vechirukken.match panni unlock pannu.');
+    const icons = ['🍫','🌳','🎬','📖','🌊','🛍️','☕','🌹'];
+    const deck = [...icons, ...icons].map(ic => ({ ic })).sort(() => Math.random() - .5);
+    stage.innerHTML = '<div class="v-puzzle-label">key 1 / 5 · unaku moola iruka nu paakra test uh idhu </div><div class="vmatch" id="vMatch"></div>';
+    const grid = stage.querySelector('#vMatch');
+    let open = [], lock = false, found = 0;
+    deck.forEach(d => {
+      const b = document.createElement('button');
+      b.className = 'vmcard'; b.dataset.icon = d.ic; b.setAttribute('aria-label', 'memory card — tap to flip');
+      b.innerHTML = `<span class="in"><span class="face front">✧</span><span class="face back" data-icon="${d.ic}">${d.ic}</span></span>`;
+      b.addEventListener('click', () => {
+        if (lock || b.classList.contains('on') || b.classList.contains('hit')) return;
+        b.classList.add('on'); sfx('page'); open.push(b);
+        if (open.length === 2){
+          const [a, c] = open; open = [];
+          if (a.dataset.icon === c.dataset.icon){
+            a.classList.add('hit'); c.classList.add('hit'); found++;
+            if (found === icons.length) grant('match');
+          } else {
+            lock = true;
+            setTimeout(() => { a.classList.remove('on'); c.classList.remove('on'); lock = false; }, REDUCED ? 600 : 720);
+          }
+        }
+      });
+      grid.appendChild(b);
+    });
+  }
+
+  function renderOrder(){
+    setMsg('key 2 · namma kadha — chronological order-la touch pannu (old → new).');
+    const items = [
+      { t:'just friends & long talks' },
+      { t:'Tower Park · July 21 🤍' },
+      { t:'the unplanned beach day' },
+      { t:'VR Mall mission' }
+    ];
+    const disp = items.map((o, i) => ({ o, i })).sort(() => Math.random() - .5);
+    stage.innerHTML = '<div class="v-puzzle-label">key 2 / 5 · nammaloda journeyy</div><div class="vorder" id="vOrder"></div>';
+    const list = stage.querySelector('#vOrder');
+    let expect = 0, wrongs = 0;
+    disp.forEach(({ o, i }) => {
+      const b = document.createElement('button');
+      b.className = 'vocard'; b.dataset.idx = i;
+      b.innerHTML = o.t;
+      b.addEventListener('click', () => {
+        if (b.classList.contains('done')) return;
+        if (i === expect){
+          b.classList.add('done'); expect++; sfx('page');
+          if (expect === items.length) grant('order');
+        } else {
+          wrongs++; shake(); sfx('page');
+          setMsg(wrongs > 2 ? 'hint: ellaam april-la dhaan aarambichuchu… conju tight-a think pannu 😉' : 'illa — before/after nenachu paaru 🙂');
+        }
+      });
+      list.appendChild(b);
+    });
+  }
+
+  function renderHearts(){
+    setMsg('key 3 · 5 hearts hide pannirukken — nee maadhiri, screen-la romba azhaga olunchu. find & tap.');
+    stage.innerHTML = '<div class="v-puzzle-label">key 3 / 5 · hidden hearts</div>' +
+      '<div class="vheart-field" id="vField"></div><div class="vbuilt" id="vHC">0 / 5</div>';
+    const field = stage.querySelector('#vField'), hc = stage.querySelector('#vHC');
+    const spots = [];
+    while (spots.length < 5){
+      const x = 6 + Math.random() * 84, y = 6 + Math.random() * 84;
+      if (spots.every(s => Math.hypot(s[0] - x, s[1] - y) > 18)) spots.push([x, y]);
+    }
+    let n = 0;
+    spots.forEach(([x, y], i) => {
+      const h = document.createElement('button');
+      h.className = 'vheart'; h.textContent = '♥'; h.dataset.n = i + 1;
+      h.style.left = x + '%'; h.style.top = y + '%';
+      h.style.animationDelay = (Math.random() * 2.8).toFixed(2) + 's';
+      h.setAttribute('aria-label', 'hidden heart ' + (i + 1));
+      h.addEventListener('click', () => {
+        if (h.classList.contains('found')) return;
+        h.classList.add('found'); n++; hc.textContent = n + ' / 5'; sfx('open');
+        if (n === 5) grant('hearts');
+      });
+      field.appendChild(h);
+    });
+    setTimeout(() => { if (!done.includes('hearts')) setMsg('twinkle-a iruka dots-ah gavanichu click pannu 👀 (indha step slow vave pogum — enjoy)'); }, 9000);
+  }
+
+  function renderTiles(){
+    setMsg('key 4 · tiles-ah correct order-la touch pannu — Some letters');
+    const target = 'THANGAMEYYY';
+    const tiles = target.split('').map((ch, i) => ({ ch, i })).sort(() => Math.random() - .5);
+    stage.innerHTML = '<div class="v-puzzle-label">key 4 / 5 · our most calling word</div>' +
+      '<div class="vbuilt" id="vBuilt"></div><div class="vtiles" id="vTiles"></div>';
+    const box = stage.querySelector('#vTiles'), built = stage.querySelector('#vBuilt');
+    let cur = '';
+    tiles.forEach(t => {
+      const b = document.createElement('button');
+      b.className = 'vtile'; b.textContent = t.ch; b.dataset.letter = t.ch; b.dataset.i = t.i;
+      b.addEventListener('click', () => {
+        if (b.classList.contains('used')) return;
+        if (t.ch === target[cur.length]){
+          cur += t.ch; b.classList.add('used'); built.textContent = cur; sfx('page');
+          if (cur === target) grant('tiles');
+        } else {
+          shake(); sfx('page');
+          setMsg('illa 🙂 T-la start pannu — unakku dhaan ithu no.1 easy-irukanum.');
+        }
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function renderFinal(){
+    setMsg('last key · mudinja — door open.');
+    stage.innerHTML = `<div class="v-puzzle-label">key 5 / 5 · the word</div>
+      <p class="gate-q" lang="ta"></p>
+      <div class="gate-row"><input id="gateInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="type your key…" aria-label="type your key">
+      <button class="vault-btn" id="gateBtn" style="margin:0">thirakku</button></div>`;
+    stage.querySelector('.gate-q').textContent = G.question;
+    const input = stage.querySelector('#gateInput');
+    const wrongLine = () => G.wrongLines[Math.floor(Math.random() * G.wrongLines.length)];
+    let fails = 0;
+    const tryOpen = () => {
+      const v = norm(input.value);
+      if (v && G.answers.some(a => norm(a) === v)){ grant('final'); }
+      else {
+        fails++; shake(); sfx('page');
+        setMsg(fails < 2 ? wrongLine() : fails < 4 ? G.hints[0] : fails < 6 ? G.hints[1] : G.hints[2]);
+        input.value = '';
+      }
+    };
+    stage.querySelector('#gateBtn').addEventListener('click', tryOpen);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') tryOpen(); });
+    setTimeout(() => input.focus(), 500);
+  }
+
+  function grant(id){
+    if (!done.includes(id)) done.push(id);
+    save(); stars(); sfx('open');
+    if (id === 'final'){ openVault(); return; }
+    setMsg(PRAISE[done.length - 1] || 'key ✓');
+    const ST = [renderIntro, renderMatch, renderOrder, renderHearts, renderTiles, renderFinal];
+    setTimeout(() => ST[done.length + 1](), 1400);
+  }
+
+  function openVault(){
+    setMsg('5 / 5 ✦ thirandhuruchu, thangam. slow-va ulla vaa…');
+    try{ localStorage.removeItem('sanaVaultKeys'); }catch(e){}
+    doorStore.set();
+    V.classList.add('done'); spawnStars(); sfx('open');
+    setTimeout(() => { V.remove(); startIntro(); }, 1600);
+  }
+
+  addEventListener('keydown', function escLock(e){
+    if (!V.isConnected){ removeEventListener('keydown', escLock); return; }
+    if (e.key === 'Escape') e.stopImmediatePropagation();
+  }, true);
+  const STEPS = [renderIntro, renderMatch, renderOrder, renderHearts, renderTiles, renderFinal];
+  if (done.length >= 5){ V.remove(); startIntro(); return; }
+  STEPS[done.length === 0 ? 0 : done.length + 1]();
 })();
 $('#openBtn').addEventListener('click', () => {
   $('#intro').classList.add('done');
@@ -1430,7 +1732,8 @@ PHOTOS.forEach((p, i) => {
 document.querySelectorAll('.pola-inner .pola-face').forEach(face => {
   const back = document.createElement('div');
   back.className = 'pola-backside';
-  back.innerHTML = `<small>✦ secret ✦</small><p>double-tap win! 🤍<br>antho message toast-la pora...</p>`;
+  back.innerHTML = `<small>✦ secret ✦</small><p>double-tap win! 🤍
+antho message toast-la pora...</p>`;
   face.after(back);
 });
 const lightbox = $('#lightbox');
@@ -1601,7 +1904,8 @@ function pickEmotion(i){
     c.className = 'pick';
     c.style.background = `linear-gradient(160deg, ${e.color}, ${e.color}d8)`;
     c.style.setProperty('--tilt', (k % 2 ? 1.8 : -2) + 'deg');
-    c.innerHTML = `<div style="font-size:1.5rem">${e.emoji}</div><div>note ${k + 1} of ${e.notes.length}<br><span style="font-size:.8em;opacity:.75">open me</span></div>`;
+    c.innerHTML = `<div style="font-size:1.5rem">${e.emoji}</div><div>note ${k + 1} of ${e.notes.length}
+<span style="font-size:.8em;opacity:.75">open me</span></div>`;
     c.addEventListener('click', () => openNote(e, n));
     pickRow.appendChild(c);
   });
@@ -1825,6 +2129,5 @@ function closeAll(){
   secret.classList.remove('show');
 }
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a49c8eaa8c9d9a55',t:'MTc5MTg3NTc3MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
